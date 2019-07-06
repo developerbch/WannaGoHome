@@ -8,6 +8,9 @@ public class ReplyBean {
 	private String nick;
 	private String reply_date;
 	private String reply_content;
+	private int re_ref;
+	private int re_lev;
+	private int re_seq;
 	
 	public int getReply_num() {
 		return reply_num;
@@ -44,6 +47,24 @@ public class ReplyBean {
 	}
 	public void setReply_content(String reply_content) {
 		this.reply_content = reply_content;
+	}
+	public int getRe_ref() {
+		return re_ref;
+	}
+	public void setRe_ref(int re_ref) {
+		this.re_ref = re_ref;
+	}
+	public int getRe_lev() {
+		return re_lev;
+	}
+	public void setRe_lev(int re_lev) {
+		this.re_lev = re_lev;
+	}
+	public int getRe_seq() {
+		return re_seq;
+	}
+	public void setRe_seq(int re_seq) {
+		this.re_seq = re_seq;
 	}
 	
 }
