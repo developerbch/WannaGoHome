@@ -24,7 +24,7 @@ public class TalkDeleteAction implements Action {
 		int num=Integer.parseInt(request.getParameter("board_num"));
 
 		BoardDAO boarddao=new BoardDAO();
-		usercheck=boarddao.isBoardWriterRecipe(num, id);
+		usercheck=boarddao.isBoardWriter(num, id);
 
 		if(usercheck==false){
 			response.setContentType("text/html;charset=euc-kr");
@@ -37,6 +37,7 @@ public class TalkDeleteAction implements Action {
 			return null;
 		}
 
+		
 		result=boarddao.talkDelete(num);
 		if(result==false){
 			System.out.println("토크 게시판 삭제 실패");
