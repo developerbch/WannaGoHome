@@ -5,7 +5,7 @@
 		src="http://recipe1.ezmember.co.kr/static/js/swiper.min.js"
 		charset="utf-8"></script>
 	<link rel="stylesheet" type="text/css"
-		href="http://recipe1.ezmember.co.kr/static/css/swiper.min.css" />
+		href="http://recipe1.ezmember.co.kr/static/css/swiper.min.css">
 	<style>
 .video-responsive {
 	overflow: hidden;
@@ -25,7 +25,7 @@
 	<script>
     $(document).ready(function()
     {
-        viewBrandChefTab('foodco');
+        viewBrandChefTab('org');
     });
 
     function viewBrandChefTab(category)
@@ -47,44 +47,97 @@
     }
 </script>
 
-	<div id="contents_area" class="col-xs-9">
-		<div class="chef_cont">
-			<div class="chef_top">
-				<img src="http://recipe1.ezmember.co.kr/img/chef_top2.jpg"
-					border="0" usemap="#Map">
-				<map name="Map">
-					<area shape="rect" coords="364,173,530,222"
-						href="/brand/apply.html" alt="브랜드쉐프-자세히보기">
-				</map>
-			</div>
-			<div class="brand2_cont1"
-				style="padding-top: 0; padding-bottom: 40px; border-bottom: 0;">
-				<div>
-					<img src="http://recipe1.ezmember.co.kr/img/brand2_tit1.jpg">
-				</div>
-				<div>
-					<iframe src="https://www.youtube.com/embed/9HDAuF7_Lwo?autoplay=1"
-						frameborder="0" width="853" height="490" allowfullscreen=""
-						ng-show="showvideo"></iframe>
-				</div>
-			</div>
-
-			<ul class="nav nav-tabs3" style="position: relative;">
-				<li role="presentation" id="tab_foodco"><a
-					href="javascript:viewBrandChefTab('foodco');">식품회사</a></li>
-				<li role="presentation" id="tab_org"><a
-					href="javascript:viewBrandChefTab('org');">단체/기관</a></li>
-				<li role="presentation" id="tab_mall"><a
-					href="javascript:viewBrandChefTab('mall');">쇼핑몰</a></li>
-				<li role="presentation" id="tab_contents"><a
-					href="javascript:viewBrandChefTab('contents');">컨텐츠</a></li>
-				<div class="list_sort"></div>
-			</ul>
-			<div class="chef_cont_list">
-				<ul id="brandChef" class="member_list st2">
-				</ul>
-			</div>
+	<jsp:include page='<%="../brand/brand_brand.jsp"%>'></jsp:include>
+	
+	<div id="right_area" class="col-xs-3">
+		<div style="text-align: center; margin-top: 10px">
+			<script async=""
+				src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- 10k_w_right_300_250 -->
+			<ins class="adsbygoogle"
+				style="display: inline-block; width: 300px; height: 250px;"
+				data-ad-client="ca-pub-1557771002660658" data-ad-slot="7619851795"
+				data-adsbygoogle-status="done">
+				<ins id="aswift_0_expand"
+					style="display: inline-table; border: none; height: 250px; margin: 0; padding: 0; position: relative; visibility: visible; width: 300px; background-color: transparent;">
+					<ins id="aswift_0_anchor"
+						style="display: block; border: none; height: 250px; margin: 0; padding: 0; position: relative; visibility: visible; width: 300px; background-color: transparent;">
+						<iframe width="300" height="250" frameborder="0" marginwidth="0"
+							marginheight="0" vspace="0" hspace="0" allowtransparency="true"
+							scrolling="no" allowfullscreen="true"
+							onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}"
+							id="aswift_0" name="aswift_0"
+							style="left: 0; position: absolute; top: 0; border: 0px; width: 300px; height: 250px;"></iframe>
+					</ins>
+				</ins>
+			</ins>
+			<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 		</div>
-	</div>
+		<script type="text/javascript">
+<!--
+$(document).ready(function()
+{
+    EZ.countLog('event_etc_right','web','read','261');
+});
+//-->
+</script>
+		<div style="margin: 10px;">
+			<a href="/event/261?q_from=event_etc_right"
+				onclick="EZ.countLog('event_etc_right','web','click','261');"><img
+				src="http://recipe1.ezmember.co.kr/cache/rpe/2019/06/27/bd477e77ee10e777c5ea4d0145d7d7771.jpg"
+				style="width: 100%;"></a>
+		</div>
 
-	<!-- /container -->
+		<script type="text/javascript">
+<!--
+$(document).ready(function()
+{
+    EZ.countLog('event_etc_right','web','read','259');
+});
+//-->
+</script>
+		<div style="margin: 10px;">
+			<a href="/event/259?q_from=event_etc_right"
+				onclick="EZ.countLog('event_etc_right','web','click','259');"><img
+				src="http://recipe1.ezmember.co.kr/cache/rpe/2019/06/13/f610c8ae4b06ab6e631a7e1914888cdd1.jpg"
+				style="width: 100%;"></a>
+		</div>
+
+
+
+		<div style="text-align: center; margin-top: 10px">
+
+
+			<script async=""
+				src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- 10k_w_right_300_600 -->
+			<ins class="adsbygoogle"
+				style="display: inline-block; width: 300px; height: 600px"
+				data-ad-client="ca-pub-1557771002660658" data-ad-slot="8777892938"
+				data-adsbygoogle-status="done">
+				<ins id="aswift_1_expand"
+					style="display: inline-table; border: none; height: 600px; margin: 0; padding: 0; position: relative; visibility: visible; width: 300px; background-color: transparent;">
+					<ins id="aswift_1_anchor"
+						style="display: block; border: none; height: 600px; margin: 0; padding: 0; position: relative; visibility: visible; width: 300px; background-color: transparent;">
+						<iframe width="300" height="600" frameborder="0" marginwidth="0"
+							marginheight="0" vspace="0" hspace="0" allowtransparency="true"
+							scrolling="no" allowfullscreen="true"
+							onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}"
+							id="aswift_1" name="aswift_1"
+							style="left: 0; position: absolute; top: 0; border: 0px; width: 300px; height: 600px;"></iframe>
+					</ins>
+				</ins>
+			</ins>
+			<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+		</div>
+
+
+	</div>
+	<!-- /right_area -->
+	<div class="col-xs-12 sub_bg_btm"></div>
+</div>
