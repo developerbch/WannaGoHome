@@ -11,6 +11,7 @@ public class MasterBean {
 	private ScrapBean scrapbean;
 	private TalkBean talkbean;
 	
+	
 	public BoardBean getBoardbean() {
 		return boardbean;
 	}

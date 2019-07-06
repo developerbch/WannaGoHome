@@ -33,7 +33,7 @@ public class TalkDetailAction implements Action {
 		return forward;
 		
 		
-		
+	
 		
 		
 	}

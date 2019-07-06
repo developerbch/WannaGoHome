@@ -37,6 +37,7 @@ public class TalkDeleteAction implements Action {
 			return null;
 		}
 
+		
 		result=boarddao.talkDelete(num);
 		if(result==false){
 			System.out.println("토크 게시판 삭제 실패");

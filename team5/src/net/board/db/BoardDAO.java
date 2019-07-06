@@ -10,6 +10,7 @@ import javax.naming.*;
 import javax.sql.DataSource;
 
 public class BoardDAO {
+	
 	Connection con;
 	PreparedStatement pstmt;
 	ResultSet rs;
