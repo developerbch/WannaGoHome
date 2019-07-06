@@ -46,7 +46,7 @@ public class MemberLoginAction implements Action {
    		
    		//로그인 성공.
    		session.setAttribute("id", member.getId());
-   		session.setAttribute("nick", member.getNick());
+   		session.setAttribute("nick", member.getId());
    		
    		forward.setRedirect(true);
    		forward.setPath("./BoardContent.bo");
