@@ -2,6 +2,7 @@ package net.board.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -11,7 +12,7 @@ import net.board.db.BoardDAO;
 import net.board.db.Cooking_orderBean;
 import net.board.db.RecipeBean;
 
-public class BoardAddAction implements Action {
+public class RecipeAddAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		BoardDAO boarddao=new BoardDAO();
@@ -20,6 +21,8 @@ public class BoardAddAction implements Action {
 		Cooking_orderBean orderdata=new Cooking_orderBean();
 		ActionForward forward=new ActionForward();
 
+		HttpSession session=request.getSession();
+		
 		String realFolder="";
 		String saveFolder="boardupload";
 
@@ -43,11 +46,11 @@ public class BoardAddAction implements Action {
 			//BoardBean
 			boarddata.setBoard_id(Integer.parseInt(multi.getParameter("board_id")));
 			boarddata.setTitle(multi.getParameter("title"));
-			boarddata.setId(multi.getParameter("id"));
+			boarddata.setId((String)session.getAttribute("id"));
 		/*	boarddata.setBOARD_FILE(
 		*			multi.getFilesystemName(
 		*					(String)multi.getFileNames().nextElement()));
-		*/	boarddata.setNick(multi.getParameter("nick"));
+		*/	boarddata.setNick((String)session.getAttribute("nick"));
 			boarddata.setUpload_date(multi.getParameter("upload_date"));
 			//RecipeBean
 			
@@ -75,13 +78,13 @@ public class BoardAddAction implements Action {
 			
 			
 			if(result==false || result2==false || result3==false){
-				System.out.println("게시판 등록 실패");
+				System.out.println("레시피 게시판 등록 실패");
 				return null;
 			}
-			System.out.println("게시판 등록 완료");
+			System.out.println("레시피 게시판 등록 완료");
 
 			forward.setRedirect(true);
-			forward.setPath("./BoardList.bo");
+			forward.setPath("./BoardList.bo"); //url 수정 요망
 			return forward;
 
 		}catch(Exception ex){

@@ -193,7 +193,7 @@ public class BoardDAO {
 
 
 
-	//글 등록(reply).
+	//댓글 등록(reply).
 	public boolean boardInsertReply(ReplyBean reply, int board_num){
 
 		String sql="";
@@ -234,27 +234,92 @@ public class BoardDAO {
 		return false;
 	}
 
+	
+	
+	
+	
+	
+	//대댓글 등록(reply).
+		public boolean boardInsertReplyReply(ReplyBean reply, int board_num){
+			
+			String sql="";
+			
+			int result=0;
+
+			int re_ref=reply.getRe_ref();
+			int re_lev=reply.getRe_lev();
+			int re_seq=reply.getRe_seq();
+			
+			//실시간 시간출력
+			SimpleDateFormat timeformat = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+			String time = timeformat.format(System.currentTimeMillis());
+
+			try{
+
+				
+				sql="update reply set RE_SEQ=RE_SEQ+1 ";
+				sql+="where RE_REF=? and RE_SEQ>?";
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1,re_ref);
+				pstmt.setInt(2,re_seq);
+				result=pstmt.executeUpdate();
+				
+				re_seq = re_seq + 1;
+				re_lev = re_lev+1;
+			
+				
+			
+				
+				sql="insert into reply (ID,NICK,REPLY_DATE,";
+				sql+="REPLY_CONTENT, BOARD_NUM, RE_REF, RE_LEV,RE_SEQ)" + 
+						"values(?,?,?,?,?,?,?,?)";
+				
+
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, reply.getId());
+				pstmt.setString(2, reply.getNick());
+				pstmt.setString(3, time);
+				pstmt.setString(4, reply.getReply_content());
+				pstmt.setInt(5, board_num);
+				pstmt.setInt(6, re_ref);
+				pstmt.setInt(7, re_lev);
+				pstmt.setInt(8, re_seq);
+
+				result=pstmt.executeUpdate(); 
+				
+				if(result==0)return false;
+
+				return true;
+			}catch(Exception ex){
+				System.out.println("boardInsertReplyReply 에러 : "+ex);
+			}finally{
+				if(rs!=null) try{rs.close();}catch(SQLException ex){}
+				if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+			}
+			return false;
+		}
 
 
 
 
 
-	//글 삭제.(talk삭제)
-	public boolean talkDelete(int num){
-		String talk_delete_sql=
+	//글 삭제.(recipe삭제)
+	public boolean recipeDelete(int num){
+		String recipe_delete_sql=
 				"delete from board where BOARD_num=?";
 
 		int result=0;
 
 		try{
-			pstmt=con.prepareStatement(talk_delete_sql);
+			pstmt=con.prepareStatement(recipe_delete_sql);
 			pstmt.setInt(1, num);
 			result=pstmt.executeUpdate();
 			if(result==0)return false;
 
 			return true;
 		}catch(Exception ex){
-			System.out.println("tlakDelete 에러 : "+ex);
+			System.out.println("recipeDelete 에러 : "+ex);
 		}finally{
 			try{
 				if(pstmt!=null)pstmt.close();
@@ -263,6 +328,34 @@ public class BoardDAO {
 
 		return false;
 	}
+	
+	
+	
+	
+	//글 삭제.(talk삭제)
+		public boolean talkDelete(int num){
+			String talk_delete_sql=
+					"delete from board where BOARD_num=?";
+
+			int result=0;
+
+			try{
+				pstmt=con.prepareStatement(talk_delete_sql);
+				pstmt.setInt(1, num);
+				result=pstmt.executeUpdate();
+				if(result==0)return false;
+
+				return true;
+			}catch(Exception ex){
+				System.out.println("talkDelete 에러 : "+ex);
+			}finally{
+				try{
+					if(pstmt!=null)pstmt.close();
+				}catch(Exception ex) {}
+			}
+
+			return false;
+		}
 
 
 
@@ -483,6 +576,7 @@ public class BoardDAO {
 			pstmt.setString(7, modifyrecipe.getRecipebean().getTag());
 			pstmt.setString(8, modifyrecipe.getRecipebean().getThumbnail());
 			pstmt.setString(9, modifyrecipe.getRecipebean().getCooking_comment());
+			pstmt.setInt(10, modifyrecipe.getBoardbean().getBoard_num());
 			pstmt.executeUpdate();
 			
 			
@@ -495,6 +589,68 @@ public class BoardDAO {
 		}
 		return false;
 	}
+	
+	
+	
+	
+	//글 수정.(talk 수정)
+		public boolean talkModify(MasterBean modifytalk) throws Exception{
+			String sql="update board set TITLE=?";
+			sql+=" where BOARD_NUM=?";
+			String sql2 = "update talk set TALK_CATEGORY=?, LOVE=?,";
+			sql2+= "TALK_CONTENT=?, TALK_PHOTO=?" + " where BOARD_NUM=?";
+
+			try{
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, modifytalk.getBoardbean().getTitle());
+				pstmt.setInt(2, modifytalk.getBoardbean().getBoard_num());
+				pstmt.executeUpdate();
+				
+				pstmt = con.prepareStatement(sql2);
+				pstmt.setInt(1, modifytalk.getTalkbean().getTalk_category());
+				pstmt.setInt(2, modifytalk.getTalkbean().getLove());
+				pstmt.setString(3, modifytalk.getTalkbean().getTalk_content());
+				pstmt.setString(4, modifytalk.getTalkbean().getTalk_photo());
+				pstmt.setInt(5, modifytalk.getBoardbean().getBoard_num());
+				pstmt.executeUpdate();
+				
+				
+				return true;
+			}catch(Exception ex){
+				System.out.println("talkModify 에러 : " + ex);
+			}finally{
+				if(rs!=null)try{rs.close();}catch(SQLException ex){}
+				if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+			}
+			return false;
+		}
+		
+		
+		
+		
+		//글 수정.(reply 수정)
+				public boolean replyModify(ReplyBean modifyreply) throws Exception{
+					String sql="update reply set REPLY_CONTENT=?, ";
+					sql+=" where REPLY_NUM=?";
+					
+
+					try{
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, modifyreply.getReply_content());
+						pstmt.setInt(2, modifyreply.getReply_num());
+						pstmt.executeUpdate();
+						
+						
+						
+						return true;
+					}catch(Exception ex){
+						System.out.println("replyModify 에러 : " + ex);
+					}finally{
+						if(rs!=null)try{rs.close();}catch(SQLException ex){}
+						if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+					}
+					return false;
+				}
 
 
 

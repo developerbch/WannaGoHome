@@ -10,11 +10,10 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import net.board.db.BoardDAO;
 import net.board.db.ReplyBean;
 
-public class ReplyAddAction implements Action {
+public class ReplyReplyAction implements Action {
 
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		
+
 		BoardDAO boarddao=new BoardDAO();
 		ReplyBean replydata=new ReplyBean();
 		ActionForward forward=new ActionForward();
@@ -43,39 +42,31 @@ public class ReplyAddAction implements Action {
 			
 			int board_num = Integer.parseInt(request.getParameter("board_num")); //get방식으로 가져옴
 			
-			//BoardBean
-			
-			
-		/*	boarddata.setBOARD_FILE(
-		*			multi.getFilesystemName(
-		*					(String)multi.getFileNames().nextElement()));
-		*/	
-			
-			
 			
 			//ReplyBean
-			
 			//replydata.setReply_num(Integer.parseInt(multi.getParameter("reply_num")));
 			replydata.setId((String)session.getAttribute("id"));
 			replydata.setNick((String)session.getAttribute("nick"));
 			replydata.setReply_date(multi.getParameter("reply_date"));
 			replydata.setReply_content(multi.getParameter("reply_content"));
-			
+			replydata.setRe_ref(Integer.parseInt(request.getParameter("RE_REF")));
+			replydata.setRe_lev(Integer.parseInt(request.getParameter("RE_LEV")));
+			replydata.setRe_seq(Integer.parseInt(request.getParameter("RE_SEQ")));
 			
 
 
-			result=boarddao.boardInsertReply(replydata, board_num);
+			result=boarddao.boardInsertReplyReply(replydata, board_num);
 
 			
 			
 			if(result==false){
-				System.out.println("댓글 등록 실패");
+				System.out.println("대댓글 등록 실패");
 				return null;
 			}
-			System.out.println("댓글 등록 완료");
+			System.out.println("대댓글 등록 완료");
 
 			forward.setRedirect(true);
-			forward.setPath("./BoardList.bo"); //토크 url로 보내야함 수정 요망!!!!!!!!!!!!!!!!!!!!!!!!!!
+			forward.setPath("./BoardList.bo"); 
 			return forward;
 
 		}catch(Exception ex){
@@ -85,6 +76,9 @@ public class ReplyAddAction implements Action {
 		
 		
 		return null;
+
+
+
 		
 	}
 
