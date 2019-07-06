@@ -25,6 +25,7 @@ public class BoardListAction implements Action {
 		BoardDAO boarddao=new BoardDAO();
 		List boardlist=new ArrayList();
 
+		
 		int limit=10;
 		
 		boardlist = boarddao.getBoardList(page,limit); //리스트를 받아옴.
