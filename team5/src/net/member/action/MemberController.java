@@ -51,6 +51,13 @@ public class MemberController extends HttpServlet {
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+		} else if(command.equals("/MemberLogout.me")){
+			action = new MemberLogoutAction();
+			try{
+				forward=action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 
 		if(forward.isRedirect()){
