@@ -1,12 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 <script>
 var curVRPage = 1;
 var totalVRcnt = 0;
@@ -150,11 +143,11 @@ function customerPropose()
     <div class="container">
         <img src="http://recipe1.ezmember.co.kr/img/logo6.png">
         <ul class="btm_stats">
-            <li><a href="/brand/apply.html" style="color:#fff;"><span class="btm_stats_1"></span>제휴업체수</a><b>404</b></li>
+            <li><a href="/brand/apply.html" style="color:#fff;"><span class="btm_stats_1"></span>제휴업체수</a><b>405</b></li>
             <li><a href="/chef/apply.html" style="color:#fff;"><span class="btm_stats_2"></span>총 쉐프수</a><b>2,242</b></li>
-            <li><a href="/recipe/list.html" style="color:#fff;"><span class="btm_stats_3"></span>총 레시피수</a><b>120,606</b></li>
+            <li><a href="/recipe/list.html" style="color:#fff;"><span class="btm_stats_3"></span>총 레시피수</a><b>120,707</b></li>
             <li><span class="btm_stats_4"></span>월 방문자수<b>5,140,000</b></li>
-            <li><span class="btm_stats_5"></span>총 레시피 조회수<b>1,474,708,785</b></li>
+            <li><span class="btm_stats_5"></span>총 레시피 조회수<b>1,476,668,344</b></li>
         </ul>
         <div class="btm_mail">
             <a href="mailto:marketing@10000recipe.com"><img src="http://recipe1.ezmember.co.kr/img/btm_img2.png"></a>
@@ -162,6 +155,9 @@ function customerPropose()
     </div>
     <div style="background:#fff; text-align:center; padding:16px 0; margin-bottom:-10px;"><img src="http://recipe1.ezmember.co.kr/img/btm_since.png"></div>
 </div>
+<script type="text/javascript" src="http://recipe1.ezmember.co.kr/static/js/jquery-ui-1.11.4.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://recipe1.ezmember.co.kr/static/js/tag-it.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://recipe1.ezmember.co.kr/static/js/ez_dialog.min_20160430.js" charset="utf-8"></script>
 <script type="text/javascript" src="http://recipe1.ezmember.co.kr/static/js/coreutil.min_20170112.js" charset="utf-8"></script>
 <script type="text/javascript" src="http://recipe1.ezmember.co.kr/static/js/ui.min_20150609.js" charset="utf-8"></script>
 <script>
@@ -176,6 +172,3 @@ function customerPropose()
 <img src="//kr-gmtdmp.mookie1.com/t/v2/learn?tagid=V2_255869&src.rand=[timestamp]" style="display:none;"/>
 <img src="//kr-gmtdmp.mookie1.com/t/v2/activity?tagid=V2_281041&src.rand=[timestamp]" style="display:none;"/>
 <iframe src="//static-tagr.gd1.mookie1.com/s1/sync-apac.html?cc=KR" style="display:none;"></iframe>
-
-</body>
-</html>
