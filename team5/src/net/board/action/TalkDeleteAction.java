@@ -24,7 +24,7 @@ public class TalkDeleteAction implements Action {
 		int num=Integer.parseInt(request.getParameter("board_num"));
 
 		BoardDAO boarddao=new BoardDAO();
-		usercheck=boarddao.isBoardWriterRecipe(num, id);
+		usercheck=boarddao.isBoardWriter(num, id);
 
 		if(usercheck==false){
 			response.setContentType("text/html;charset=euc-kr");

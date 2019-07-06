@@ -38,7 +38,7 @@ public class BoardDAO {
 
 
 		try{
-			
+
 
 
 			sql="insert into board (BOARD_ID,TITLE,";
@@ -79,7 +79,7 @@ public class BoardDAO {
 
 
 		try{
-			
+
 
 
 			sql="insert into recipe (COOKING_SERVING,COOKING_TIME,";
@@ -124,7 +124,7 @@ public class BoardDAO {
 
 
 		try{
-			
+
 
 
 			sql="insert into cooking_order (COOKING_CONTENT,COOKING_PHOTO,";
@@ -162,7 +162,7 @@ public class BoardDAO {
 
 
 		try{
-			
+
 
 
 			sql="insert into talk (TALK_CATEGORY,LOVE,";
@@ -190,113 +190,113 @@ public class BoardDAO {
 		return false;
 	}
 
-	
-	
+
+
 	//글 등록(reply).
-		public boolean boardInsertReply(ReplyBean reply, int board_num){
+	public boolean boardInsertReply(ReplyBean reply, int board_num){
 
-			String sql="";
+		String sql="";
 
-			int result=0;
+		int result=0;
 
-			//실시간 시간출력
-			SimpleDateFormat timeformat = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
-			String time = timeformat.format(System.currentTimeMillis());
+		//실시간 시간출력
+		SimpleDateFormat timeformat = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+		String time = timeformat.format(System.currentTimeMillis());
 
-			try{
-				
-
-
-				sql="insert into reply (ID,NICK,";
-				sql+="REPLY_DATE, REPLY_CONTENT, BOARD_NUM)" + 
-						"values(?,?,?,?,?)";
+		try{
 
 
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, reply.getId());
-				pstmt.setString(2, reply.getNick());
-				pstmt.setString(3, time);
-				pstmt.setString(4, reply.getReply_content());
-				pstmt.setInt(5, board_num);
+
+			sql="insert into reply (ID,NICK,";
+			sql+="REPLY_DATE, REPLY_CONTENT, BOARD_NUM)" + 
+					"values(?,?,?,?,?)";
 
 
-				result=pstmt.executeUpdate();
-				if(result==0)return false;
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, reply.getId());
+			pstmt.setString(2, reply.getNick());
+			pstmt.setString(3, time);
+			pstmt.setString(4, reply.getReply_content());
+			pstmt.setInt(5, board_num);
 
-				return true;
-			}catch(Exception ex){
-				System.out.println("boardInsertReply 에러 : "+ex);
-			}finally{
-				if(rs!=null) try{rs.close();}catch(SQLException ex){}
-				if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
-			}
-			return false;
+
+			result=pstmt.executeUpdate();
+			if(result==0)return false;
+
+			return true;
+		}catch(Exception ex){
+			System.out.println("boardInsertReply 에러 : "+ex);
+		}finally{
+			if(rs!=null) try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
 		}
-		
-		
-		
-		
-		
-		
+		return false;
+	}
+
+
+
+
+
+
 	//글 삭제.(talk삭제)
-		public boolean talkDelete(int num){
-			String talk_delete_sql=
+	public boolean talkDelete(int num){
+		String talk_delete_sql=
 				"delete from board where BOARD_num=?";
-			
-			int result=0;
-			
+
+		int result=0;
+
+		try{
+			pstmt=con.prepareStatement(talk_delete_sql);
+			pstmt.setInt(1, num);
+			result=pstmt.executeUpdate();
+			if(result==0)return false;
+
+			return true;
+		}catch(Exception ex){
+			System.out.println("tlakDelete 에러 : "+ex);
+		}finally{
 			try{
-				pstmt=con.prepareStatement(talk_delete_sql);
-				pstmt.setInt(1, num);
-				result=pstmt.executeUpdate();
-				if(result==0)return false;
-				
-				return true;
-			}catch(Exception ex){
-				System.out.println("tlakDelete 에러 : "+ex);
-			}finally{
-				try{
-					if(pstmt!=null)pstmt.close();
-				}catch(Exception ex) {}
-			}
-			
-			return false;
+				if(pstmt!=null)pstmt.close();
+			}catch(Exception ex) {}
 		}
-		
-		
-		
-		
-		
-		//댓글 삭제.(reply삭제)
-				public boolean replyDelete(int num){
-					String reply_delete_sql=
-						"delete from reply where reply_num=?";
-					
-					int result=0;
-					
-					try{
-						pstmt=con.prepareStatement(reply_delete_sql);
-						pstmt.setInt(1, num);
-						result=pstmt.executeUpdate();
-						if(result==0)return false;
-						
-						return true;
-					}catch(Exception ex){
-						System.out.println("replyDelete 에러 : "+ex);
-					}finally{
-						try{
-							if(pstmt!=null)pstmt.close();
-						}catch(Exception ex) {}
-					}
-					
-					return false;
-				}
+
+		return false;
+	}
 
 
-				
-				
-	//글쓴이인지 확인.(recipe)
-	public boolean isBoardWriterRecipe(int num,String id){
+
+
+
+	//댓글 삭제.(reply삭제)
+	public boolean replyDelete(int num){
+		String reply_delete_sql=
+				"delete from reply where reply_num=?";
+
+		int result=0;
+
+		try{
+			pstmt=con.prepareStatement(reply_delete_sql);
+			pstmt.setInt(1, num);
+			result=pstmt.executeUpdate();
+			if(result==0)return false;
+
+			return true;
+		}catch(Exception ex){
+			System.out.println("replyDelete 에러 : "+ex);
+		}finally{
+			try{
+				if(pstmt!=null)pstmt.close();
+			}catch(Exception ex) {}
+		}
+
+		return false;
+	}
+
+
+
+
+	//글쓴이인지 확인.
+	public boolean isBoardWriter(int num,String id){
 		String board_sql=
 				"select * from board where BOARD_NUM=?";
 
@@ -314,29 +314,189 @@ public class BoardDAO {
 		}
 		return false;
 	}
-	
-	
-	
+
+
+
 	//글쓴이인지 확인.(reply)
-		public boolean isBoardWriterReply(int num,String id){
-			String board_sql=
-					"select * from board where REPLY_NUM=?";
+	public boolean isBoardWriterReply(int num,String id){
+		String board_sql=
+				"select * from board where REPLY_NUM=?";
 
-			try{
-				pstmt=con.prepareStatement(board_sql);
-				pstmt.setInt(1, num);
-				rs=pstmt.executeQuery();
-				rs.next();
+		try{
+			pstmt=con.prepareStatement(board_sql);
+			pstmt.setInt(1, num);
+			rs=pstmt.executeQuery();
+			rs.next();
 
-				if(id.equals(rs.getString("id"))){
-					return true;
-				}
-			}catch(SQLException ex){
-				System.out.println("isBoardWriterReply 에러 : "+ex);
+			if(id.equals(rs.getString("id"))){
+				return true;
 			}
-			return false;
+		}catch(SQLException ex){
+			System.out.println("isBoardWriterReply 에러 : "+ex);
 		}
-	
+		return false;
+	}
+
+
+	//조회수 업데이트.
+	public void setViewCountUpdate(int num) throws Exception{
+		String sql="update board set VIEW_COUNT = "+
+				"VIEW_COUNT+1 where BOARD_NUM = "+num;
+
+		try{
+			pstmt=con.prepareStatement(sql);
+			pstmt.executeUpdate();
+		}catch(SQLException ex){
+			System.out.println("setViewCountUpdate 에러 : "+ex);
+		}
+	}
+
+
+	//글 내용 보기.(recipe 상세보기)
+	public MasterBean getRecipeDetail(int num) throws Exception{
+
+		MasterBean master = null;
+		BoardBean board = null;
+		RecipeBean recipe = null;
+
+		try{
+			pstmt = con.prepareStatement(
+					"select * from board bd left outer join recipe rc on bd.board_num = rc.board_num where BOARD_NUM = ? ");
+			pstmt.setInt(1, num);
+
+			rs= pstmt.executeQuery();
+
+			if(rs.next()){
+				master = new MasterBean();
+				board = new BoardBean();
+				recipe = new RecipeBean();
+
+				board.setBoard_num(rs.getInt("BOARD_NUM"));
+				board.setBoard_id(rs.getInt("BOARD_ID"));
+				board.setTitle(rs.getString("TITLE"));
+				board.setId(rs.getString("ID"));
+				board.setNick(rs.getString("NICK"));
+				board.setUpload_date(rs.getString("UPLOAD_DATE"));
+				board.setView_count(rs.getInt("VIEW_COUNT"));
+				recipe.setBoard_num(rs.getInt("BOARD_NUM"));
+				recipe.setCooking_serving(rs.getString("COOKING_SERVING"));
+				recipe.setCooking_time(rs.getString("COOKING_TIME")); 
+				recipe.setDifficulty(rs.getString("DIFFICULTY"));
+				recipe.setVideo_url(rs.getString("VIDEO_URL"));
+				recipe.setEssential_ingredient(rs.getString("ESSENTIAL_INGREDIENT"));
+				recipe.setSelective_ingredient(rs.getString("SELECTIVE_INGREDIENT"));
+				recipe.setTag(rs.getString("TAG"));
+				recipe.setThumbnail(rs.getString("THUMBNAIL"));
+				recipe.setCooking_comment(rs.getString("COOKING_COMMENT"));
+
+				master.setBoardbean(board);
+				master.setRecipebean(recipe);
+
+			}
+			return master;
+		}catch(Exception ex){
+			System.out.println("getDetail 에러 : " + ex);
+		}finally{
+			if(rs!=null)try{rs.close();}catch(SQLException ex){}
+			if(pstmt !=null)try{pstmt.close();}catch(SQLException ex){}
+		}
+		return null;
+	}
+
+
+
+
+
+	//글 내용 보기.(talk 상세보기)
+	public MasterBean getTalkDetail(int num) throws Exception{
+
+		MasterBean master = null;
+		BoardBean board = null;
+		TalkBean talk = null;
+
+		try{
+			pstmt = con.prepareStatement(
+					"select * from board bd left outer join talk tk on bd.board_num = tk.board_num where BOARD_NUM = ? ");
+			pstmt.setInt(1, num);
+
+			rs= pstmt.executeQuery();
+
+			if(rs.next()){
+				master = new MasterBean();
+				board = new BoardBean();
+				talk = new TalkBean();
+
+				board.setBoard_num(rs.getInt("BOARD_NUM"));
+				board.setBoard_id(rs.getInt("BOARD_ID"));
+				board.setTitle(rs.getString("TITLE"));
+				board.setId(rs.getString("ID"));
+				board.setNick(rs.getString("NICK"));
+				board.setUpload_date(rs.getString("UPLOAD_DATE"));
+				board.setView_count(rs.getInt("VIEW_COUNT"));
+				talk.setBoard_num(rs.getInt("BOARD_NUM"));
+				talk.setTalk_category(rs.getInt("TALK_CATEGORY"));
+				talk.setLove(rs.getInt("LOVE")); 
+				talk.setTalk_content(rs.getString("TALK_CONTENT"));
+				talk.setTalk_photo(rs.getString("TALK_PHOTO"));
+
+				master.setBoardbean(board);
+				master.setTalkbean(talk);
+
+			}
+			return master;
+		}catch(Exception ex){
+			System.out.println("getDetail 에러 : " + ex);
+		}finally{
+			if(rs!=null)try{rs.close();}catch(SQLException ex){}
+			if(pstmt !=null)try{pstmt.close();}catch(SQLException ex){}
+		}
+		return null;
+	}
+
+
+
+
+
+	//글 수정.(recipe 수정)
+	public boolean recipeModify(MasterBean modifyrecipe) throws Exception{
+		String sql="update board set TITLE=?";
+		sql+=" where BOARD_NUM=?";
+		String sql2 = "update recipe set COOKING_SERVING=?, COOKING_TIME=?,";
+		sql2+= "DIFFICULTY=?, VIDEO_URL=?, ESSENTIAL_INGREDIENT=?,"+
+		" SELECTIVE_INGREDIENT=?, TAG=?, THUMBNAIL=?, COOKING_COMMENT=?"
+		+ " where BOARD_NUM=?";
+
+		try{
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, modifyrecipe.getBoardbean().getTitle());
+			pstmt.setInt(2, modifyrecipe.getBoardbean().getBoard_num());
+			pstmt.executeUpdate();
+			
+			pstmt = con.prepareStatement(sql2);
+			pstmt.setString(1, modifyrecipe.getRecipebean().getCooking_serving());
+			pstmt.setString(2, modifyrecipe.getRecipebean().getCooking_time());
+			pstmt.setString(3, modifyrecipe.getRecipebean().getDifficulty());
+			pstmt.setString(4, modifyrecipe.getRecipebean().getVideo_url());
+			pstmt.setString(5, modifyrecipe.getRecipebean().getEssential_ingredient());
+			pstmt.setString(6, modifyrecipe.getRecipebean().getSelective_ingredient());
+			pstmt.setString(7, modifyrecipe.getRecipebean().getTag());
+			pstmt.setString(8, modifyrecipe.getRecipebean().getThumbnail());
+			pstmt.setString(9, modifyrecipe.getRecipebean().getCooking_comment());
+			pstmt.executeUpdate();
+			
+			
+			return true;
+		}catch(Exception ex){
+			System.out.println("recipeModify 에러 : " + ex);
+		}finally{
+			if(rs!=null)try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+		}
+		return false;
+	}
+
+
+
 }
 
 
