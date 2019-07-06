@@ -21,11 +21,14 @@
 	width: 100%;
 	position: absolute;
 }
+.sarajeora {
+display: none;
+}
 </style>
 	<script>
     $(document).ready(function()
     {
-        viewBrandChefTab('org');
+        viewBrandChefTab('foodco');
     });
 
     function viewBrandChefTab(category)
@@ -36,14 +39,11 @@
         $("#tab_contents").removeClass();
         $("#tab_"+category).addClass('active');
         
-        $.ajax({
-            type: "GET",
-            url: "/brand/home.html?q_mode=getBrandChefList&category="+category,
-            dataType: "html",
-            success: function(ret) {
-                $("#brandChef").html(ret);
-            }
-        });
+        $(".tab_ctg_foodco").addClass('sarajeora');
+        $(".tab_ctg_org").addClass('sarajeora');
+        $(".tab_ctg_mall").addClass('sarajeora');
+        $(".tab_ctg_contents").addClass('sarajeora');
+        $(".tab_ctg_"+category).removeClass('sarajeora');
     }
 </script>
 
