@@ -39,7 +39,19 @@ public class BoardController extends HttpServlet {
 			forward=new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./board/board_main_content.jsp");
-		}			
+		} else if(command.equals("/BoardWrite.bo")){
+			forward=new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./board/board_write.jsp");
+		} else if(command.equals("/BoardAddAction.bo")){
+			action = new RecipeAddAction();
+			try{
+				forward=action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
 		if(forward.isRedirect()){
 			response.sendRedirect(forward.getPath());
 		}else{

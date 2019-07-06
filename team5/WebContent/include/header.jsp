@@ -59,8 +59,7 @@ function doRTKeyword()
 	<div class="gnb_top_wrap">
 		<div class="gnb_top">
 			<h1>
-				<a href="./BoardContent.bo"><img
-					src="http://recipe1.ezmember.co.kr/img/logo4.png" alt="로고"></a>
+				<a href="./BoardContent.bo"><img src="http://recipe1.ezmember.co.kr/img/logo4.png" alt="로고"></a>
 			</h1>
 			<div class="gnb_search">
 				<form id="frmTopRecipeSearch" method="get"
@@ -132,22 +131,20 @@ function doRTKeyword()
 				<%
 					}
 				%>
-				
-						
-				<li><a id="btnTopWrite" href="javascript:void(0)"
-					data-toggle="tooltip" data-placement="top" title="레시피등록"
-					data-original-title="레시피등록"><img
-						src="http://recipe1.ezmember.co.kr/img/tmn_write.png"></a>
-					<div class="write_layer document_common_layer"
-						style="display: none; left: -230px;">
-						<a href="/inbox/insert.html" class="w_layer2"><img
-							src="http://recipe1.ezmember.co.kr/img/btn_write1.gif"><span>직접
-								등록하기</span></a><a id="btnBlogForm" href="javascript:void(0)"
-							class="w_layer3" data-toggle="modal"
-							data-target="#divModalBlogForm"><img
-							src="http://recipe1.ezmember.co.kr/img/btn_write2.gif"><span>블로그
-								가져오기</span></a>
-					</div></li>
+				<li>
+					<a id="btnTopWrite" href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="레시피등록" data-original-title="레시피등록">
+						<img src="http://recipe1.ezmember.co.kr/img/tmn_write.png">
+					</a>
+					<div class="write_layer document_common_layer" style="display: none; left: -230px;">
+						<a href="./BoardWrite.bo" class="w_layer2">
+							<img src="http://recipe1.ezmember.co.kr/img/btn_write1.gif">
+							<span>직접 등록하기</span>
+						</a><a id="btnBlogForm" href="javascript:void(0)" class="w_layer3" data-toggle="modal" data-target="#divModalBlogForm">
+							<img src="http://recipe1.ezmember.co.kr/img/btn_write2.gif">
+							<span>블로그 가져오기</span>
+						</a>
+					</div>
+				</li>
 				<li><a href="https://shop.10000recipe.com"
 					data-toggle="tooltip" title="만개스토어" target="_blank"><img
 						src="http://recipe1.ezmember.co.kr/img/tmn_store.png?v.1"
@@ -180,6 +177,7 @@ function doRTKeyword()
       $("#" + pagefile + "page").addClass('active');
    });
 </script>
+<!-- header 메뉴 탭 하이라이트 -->
 
 <script>
 var fromOther = 'n';
