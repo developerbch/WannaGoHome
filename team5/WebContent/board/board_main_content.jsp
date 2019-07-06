@@ -16,6 +16,7 @@
 	else if(pagefile.equals("ranking")) { pagefile="board_ranking_content"; }
 	else if(pagefile.equals("event")) { pagefile="board_event_content"; }
 	else if(pagefile.equals("myhome")) { pagefile="board_myhome_content"; }
+	
 %>
 <meta charset="EUC-KR">
 <title>TEAM5_만개의레시피</title>

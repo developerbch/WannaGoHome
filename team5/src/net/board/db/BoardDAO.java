@@ -27,25 +27,19 @@ public class BoardDAO {
 	}
 
 	//글 등록(board).
-	public boolean boardInsert(BoardBean board){
+	public int boardInsert(BoardBean board){
 
 		String sql="";
-
 		int result=0;
 
 		//실시간 시간출력
 		SimpleDateFormat timeformat = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
 		String time = timeformat.format(System.currentTimeMillis());
 
-
 		try{
-
-
-
 			sql="insert into board (BOARD_ID,TITLE,";
 			sql+="ID, NICK,UPLOAD_DATE,"+
 					"VIEW_COUNT)"+"values(?,?,?,?,?,?)";
-
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, board.getBoard_id());
@@ -55,51 +49,46 @@ public class BoardDAO {
 			pstmt.setString(5, time);				
 			pstmt.setInt(6, board.getView_count());
 
-
 			result=pstmt.executeUpdate();
-			if(result==0)return false;
+			if(result==0)return 0;
 
-			return true;
+			pstmt = con.prepareStatement("SELECT board_seq.currval FROM dual");
+			rs=pstmt.executeQuery();
+			if(rs.next())
+				return rs.getInt(1);
 		}catch(Exception ex){
 			System.out.println("boardInsert 에러 : "+ex);
 		}finally{
 			if(rs!=null) try{rs.close();}catch(SQLException ex){}
 			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
 		}
-		return false;
+		return 0;
 	}
 
 
 	//글 등록(recipe).
-	public boolean boardInsertRecipe(RecipeBean recipe){
+	public boolean boardInsertRecipe(RecipeBean recipe, int board_num){
 
 		String sql="";
-
 		int result=0;
 
-
-
 		try{
-
-
-
-			sql="insert into recipe (COOKING_SERVING,COOKING_TIME,";
+			sql="insert into recipe (BOARD_NUM,COOKING_SERVING,COOKING_TIME,";
 			sql+="DIFFICULTY, VIDEO_URL, ESSENTIAL_INGREDIENT," + 
 					"SELECTIVE_INGREDIENT, TAG, THUMBNAIL, COOKING_COMMENT)" + 
-					"values(?,?,?,?,?,?,?,?,?)";
-
+					"values(?,?,?,?,?,?,?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, recipe.getCooking_serving());
-			pstmt.setString(2, recipe.getCooking_time());
-			pstmt.setString(3, recipe.getDifficulty());
-			pstmt.setString(4, recipe.getVideo_url());
-			pstmt.setString(5, recipe.getEssential_ingredient());				
-			pstmt.setString(6, recipe.getSelective_ingredient());
-			pstmt.setString(7, recipe.getTag());
-			pstmt.setString(8, recipe.getThumbnail());
-			pstmt.setString(9, recipe.getCooking_comment());
-
+			pstmt.setInt(1, board_num);
+			pstmt.setString(2, recipe.getCooking_serving());
+			pstmt.setString(3, recipe.getCooking_time());
+			pstmt.setString(4, recipe.getDifficulty());
+			pstmt.setString(5, recipe.getVideo_url());
+			pstmt.setString(6, recipe.getEssential_ingredient());				
+			pstmt.setString(7, recipe.getSelective_ingredient());
+			pstmt.setString(8, recipe.getTag());
+			pstmt.setString(9, recipe.getThumbnail());
+			pstmt.setString(10, recipe.getCooking_comment());
 
 			result=pstmt.executeUpdate();
 			if(result==0)return false;
@@ -116,28 +105,21 @@ public class BoardDAO {
 
 
 	//글 등록(cooking_order).
-	public boolean boardInsertOrder(Cooking_orderBean order){
+	public boolean boardInsertOrder(Cooking_orderBean order, int board_num){
 
 		String sql="";
-
 		int result=0;
 
-
-
 		try{
-
-
-
-			sql="insert into cooking_order (COOKING_CONTENT,COOKING_PHOTO,";
+			sql="insert into cooking_order (BOARD_NUM,COOKING_CONTENT,COOKING_PHOTO,";
 			sql+="STEP)" + 
-					"values(?,?,?)";
-
+					"values(?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, order.getCooking_content());
-			pstmt.setString(2, order.getCooking_photo());
-			pstmt.setInt(3, order.getStep());
-
+			pstmt.setInt(1, board_num);
+			pstmt.setString(2, order.getCooking_content());
+			pstmt.setString(3, order.getCooking_photo());
+			pstmt.setInt(4, order.getStep());
 
 			result=pstmt.executeUpdate();
 			if(result==0)return false;
