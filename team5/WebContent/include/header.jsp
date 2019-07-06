@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
-   <%
-      String pagefile;
-      pagefile = (request.getParameter("pagefile") != null)? request.getParameter("pagefile") : "home";
-      
-   %>	
-	
+<%
+	String pagefile;
+	String id;
+	id = (session.getAttribute("id") != null)? session.getAttribute("id").toString(): null;
+	pagefile = (request.getParameter("pagefile") != null)? request.getParameter("pagefile"): "home";
+%>
+
 <noscript>
 	<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDPW2LX"
 		height="0" width="0" style="display: none; visibility: hidden"></iframe>
@@ -99,8 +100,40 @@ function doRTKeyword()
 				</div>
 			</div>
 			<ul class="gnb_right">
+				<%
+					if(id == null) {
+				%>
 				<li><a href="./MemberLogin.me"><img
 						src="http://recipe1.ezmember.co.kr/img/ico_user.png" alt="로그인"></a></li>
+				<%
+					} else if(!id.equals("admin")) {
+				%>
+				<li>
+                        <a id="memLayerBtn" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="마이페이지" data-original-title="마이페이지">
+                        	<img src="http://recipe1.ezmember.co.kr/img/df/pm_100_100.png">
+                        </a>
+                        <div class="mem_layer document_common_layer" style="display:none;left:-40px;">
+                            <p class="mem_layer_t"></p>
+                            <p class="mem_layer_m" style="text-align:left;">
+                                <a href="/profile/index.html">MY홈</a>
+                                <a href="/profile/scrap.html">스크랩한 레시피</a>
+                                <a href="/profile/note.html">레시피 노트</a>
+                                <a href="/profile/alim.html">알림</a>
+                                <a href="/profile/message.html">메시지</a>
+                                <a href="/profile/qna.html">문의내역</a>
+								<a href="/profile/order.html">주문조회</a>
+								<a href="/shop/cart.html">장바구니</a>
+                                <a href="/user/check_login.html">회원정보수정</a>
+                                <a href="./MemberLogout.me">로그아웃</a>
+							</p>
+                            <p class="mem_layer_b"></p>
+                        </div>
+                    </li>
+				<%
+					}
+				%>
+				
+						
 				<li><a id="btnTopWrite" href="javascript:void(0)"
 					data-toggle="tooltip" data-placement="top" title="레시피등록"
 					data-original-title="레시피등록"><img
