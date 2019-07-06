@@ -1,348 +1,46 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
-
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<!--[if (IE 6)|(IE 7)|(IE 8)|(IE 9)]>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" class="old_ie">
+<![endif]-->
+<![if !IE]>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" class="">
+<![endif]>
+<head>  
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="-1" />
 <meta property="fb:pages" content="1567451316868458" />
-<meta name="description"
-	content="5만건 이상의 레시피, 편리한 검색, 추천 레시피, 인기쿡방 레시피, 매주 이벤트">
+<meta name="description" content="5만건 이상의 레시피, 편리한 검색, 추천 레시피, 인기쿡방 레시피, 매주 이벤트">
 <meta name="keywords" content="">
-<meta name="google-site-verification"
-	content="3eLg1zfxeZ_oO6oOOsvIxbtcW-FtDsViPVm7-CYOl8w" />
-<title>TEAM5_만개의 레시피</title>
+<meta name="google-site-verification" content="3eLg1zfxeZ_oO6oOOsvIxbtcW-FtDsViPVm7-CYOl8w" />
+<title>TEAM5_만개의레시피</title>
 <meta property="kakao:title" content="만개의 레시피" />
 <meta property="kakao:description" content="" />
-<script>
-	(function(w, d, s, l, i) {
-		w[l] = w[l] || [];
-		w[l].push({
-			'gtm.start' : new Date().getTime(),
-			event : 'gtm.js'
-		});
-		var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l='
-				+ l
-				: '';
-		j.async = true;
-		j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-		f.parentNode.insertBefore(j, f);
-	})(window, document, 'script', 'dataLayer', 'GTM-PDPW2LX');
-</script>
-<link rel="stylesheet" type="text/css"
-	href="http://recipe1.ezmember.co.kr/static/css/bootstrap_20180417.css" />
-<link rel="stylesheet" type="text/css" href="/static/css/font.css" />
-<link rel="stylesheet" type="text/css"
-	href="/static/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="http://recipe1.ezmember.co.kr/static/css/ez_recipe_20190221.css" />
-<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-<link
-	href="http://recipe1.ezmember.co.kr/img/icons/apple-touch-icon.png"
-	rel="apple-touch-icon" />
-<link
-	href="http://recipe1.ezmember.co.kr/img/icons/apple-touch-icon-76x76.png"
-	rel="apple-touch-icon" sizes="76x76" />
-<link
-	href="http://recipe1.ezmember.co.kr/img/icons/apple-touch-icon-120x120.png"
-	rel="apple-touch-icon" sizes="120x120" />
-<link
-	href="http://recipe1.ezmember.co.kr/img/icons/apple-touch-icon-152x152.png"
-	rel="apple-touch-icon" sizes="152x152" />
-<link
-	href="http://recipe1.ezmember.co.kr/img/icons/apple-touch-icon-180x180.png"
-	rel="apple-touch-icon" sizes="180x180" />
-<link href="http://recipe1.ezmember.co.kr/img/icons/icon-hires.png"
-	rel="icon" sizes="192x192" />
-<link href="http://recipe1.ezmember.co.kr/img/icons/icon-normal.png"
-	rel="icon" sizes="128x128" />
-<script type="text/javascript"
-	src="http://recipe1.ezmember.co.kr/static/js/jquery-1.11.2.min.js"
-	charset="utf-8"></script>
-<script type="text/javascript"
-	src="//static.criteo.net/js/ld/publishertag.js"></script>
-<script type="text/javascript">
-	// Common Javascript
-	var _WWW_URL_ = 'http://www.10000recipe.com';
-	var _IMG_URL_ = 'http://recipe1.ezmember.co.kr';
-	var _FILE_URL_ = 'http://recipe1.ezmember.co.kr/cache';
-	var _CURRENT_PAGE_ = 'http://www.10000recipe.com/user/join.html';
-	var _USER_ID_ = '';
-</script>
-
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PDPW2LX');</script> 
-<script>
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PDPW2LX');
-</script>   
-
-<script type="text/javascript">
-// Common Javascript
-var _WWW_URL_ = 'http://www.10000recipe.com';
-var _IMG_URL_ = 'http://recipe1.ezmember.co.kr';
-var _FILE_URL_ = 'http://recipe1.ezmember.co.kr/cache';
-var _CURRENT_PAGE_ = 'http://www.10000recipe.com/inbox/insert.html';
-var _USER_ID_ = '39584691';
-</script>
-
-
- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDPW2LX"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>   
-
-<script type="text/javascript" src="http://recipe1.ezmember.co.kr/static/js/jquery-ui-1.11.4.js" charset="utf-8"></script><link rel="stylesheet" type="text/css" href="http://recipe1.ezmember.co.kr/static/css/jquery-ui-1.11.4_201507011.css" /><script>
-$(document).ready(function() {
-    doRTKeyword();
-
-    $("#srhRecipeText").keypress(function(event) {
-        if (event.which == 13) {
-            event.preventDefault();
-            $("#frmTopRecipeSearch").submit();
-        }
-    }).autocomplete({
-        delay: 200,
-        source: "/recipe/ajax.html?q_mode=autoComplete",
-        focus: function(event, ui) {
-            return false;
-        },
-        select: function(event, ui) {
-            this.value = ui.item.label;
-            return false;
-        }
-    }).focus();
-
-});
-
-
-
-var curRtword = 2;
-function doRTKeyword()
-{
-    var backRtword = (curRtword == 1) ? 2 : 1;
-    $("#RtwordDiv_"+curRtword).hide();
-    $("#RtwordDiv_"+backRtword).show();
-    curRtword = backRtword;
-}
-</script>
-
-<a href="#" id="btnGogoTop" class="rmenu_top" style="display:none"><span class="glyphicon glyphicon-menu-up"></span></a>
-
-<script>
-var fromOther = 'n';
-$(document).ready(function() {
-    $(".ellipsis_title").ellipsis({row: 1});
-    $(".ellipsis_title2").ellipsis({row: 2});
-
-    $(window).scroll(function() {
-        if ($(window).scrollTop() > $(window).height()*1.5) {
-            $("#btnGogoTop").slideDown(300);
-        } else {
-            $("#btnGogoTop").slideUp(300);
-        }
-    });
-    $('[data-toggle="tooltip"]').tooltip();
-});
-
-$(function() {
-    $('#memLayerBtn').click(function (e) {
-        // Used to stop the event bubbling..
-        e.stopPropagation();
-        $(".document_common_layer:not('.mem_layer')").hide();
-        if ($('.mem_layer').is(':visible')) {
-            $('.mem_layer').hide();
-        } else {
-            $('.mem_layer').show();
-        }
-    });
-
-    $('#btnTopWrite').click(function (e) {
-        // Used to stop the event bubbling..
-        $(".document_common_layer:not('.write_layer')").hide();
-        e.stopPropagation();
-        if ($('html').is('.old_ie')) {
-            //$('#divBrowserGuideModal').modal({backdrop:'static'});
-            $('#divBrowserGuideModal').modal('show');
-        } else {
-            if ($('.write_layer').is(':visible')) {
-                $('.write_layer').hide();
-            } else {
-                $('.write_layer').show();
-            }
-        }
-    });
-    $(document).click(function () {
-        $('.document_common_layer').hide();
-    });
-
-    $("#btnBlogContentsList").click(function() {
-        $("#btnBlogContentsList").html('<span class="fa fa-spinner fa-spin" style="width:'+$("#btnBlogContentsList").width()+'px"></span>');
-        el = $(this);
-        var params = 'q_mode=get_blog_contents_list&q_portal='+$("[name=q_portal]:checked").val()+'&q_blogid='+$("#q_blogid").val();
-        $.get("/common/ajx_common.html?"+params, function(html) {
-            $("#btnBlogContentsList").html('조회');
-            $("#divBlogContentsList").html(html);
-        });
-    });
-    $('#divModalBlogForm').on('show.bs.modal',function() {
-        $.ajax({
-            type: "POST",
-            url: "/common/ajx_common.html",
-            data: "q_mode=get_blog_info",
-            dataType: "json",
-            success: function(json) {
-                if (json['portal']) {
-                    $("[id^=q_portal_]").filter('[value='+json['portal']+']').trigger('click');
-                }
-                if (json['blog_id']) {
-                    $("#q_blogid").val(json['blog_id']);
-                    $("#q_blog_select_type_id").trigger('click');
-                }
-            },
-            error: function () {
-
-            }
-        });
-    });
-});
-var _blogIsSubmit = false;
-function doChangePortal(portal) {
-    var header = '';
-    var tail = '';
-    if (portal == 'Naver') {
-        header = 'http://blog.naver.com/';
-        tail = '';
-    } else if (portal == 'Daum') {
-        header = 'http://blog.daum.net/';
-        tail = '';
-    } else if (portal == 'Tistory') {
-        header = 'http://';
-        tail = '.tistory.com';
-    }
-    $("#txtBlogHeader").text(header);
-    $("#txtBlogTail").text(tail);
-}
-
-function doBlogSelect() {
-     var select_type = $(':radio[name="q_blog_select_type"]:checked').val();
-     if (select_type == 'url') {
-        var q_link = $("#q_blogurl").val();
-        if ($.trim(q_link) == '') {
-            alert('URL을 입력해 주세요.');
-            $("#q_blogurl").focus();
-            return;
-        } else {
-            setBlogContents(q_link);
-        }
-     } else {
-        getBlogContentsList();
-     }
-}
-function getBlogContentsList(page,added_params) {
-    if (page == 0) return;
-    if (!page) {
-        page = 1;
-    }
-    if ($("#q_blogid").val() == '') {
-        alert("블로그 주소를 입력해 주세요.");
-        return;
-    }
-    //var blog_url = $("#txtBlogHeader").text() + $("#q_blogid").val() + $("#txtBlogTail");
-
-    if (_blogIsSubmit) {
-        alert("처리중 입니다. 잠시만 기다리세요.");
-        return;
-    }
-
-    if (page > parseInt($("#q_page").val(),10)) {
-        $("#btnBlogNext").html('<span class="fa fa-spinner fa-spin" style="width:'+$("#btnBlogNext").width()+'px"></span>');
-    } else if (page < parseInt($("#q_page").val(),10)) {
-        $("#btnBlogPrev").html('<span class="fa fa-spinner fa-spin" style="width:'+$("#btnBlogPrev").width()+'px"></span>');
-    }
-
-    $("#q_page").val(page);
-    _blogIsSubmit = true;
-    var params = 'q_mode=get_blog_contents_list&q_portal='+$("[name=q_portal]:checked").val()+'&q_blogid='+$("#q_blogid").val()+'&q_scal='+$("#q_scal").val()+'&q_page='+page;
-    if (added_params) {
-        if (added_params.substring(0,1) != '&') params += '&';
-        params += added_params;
-    }
-
-    $.ajax({
-        type: "POST",
-        cache: false,
-        url: "/common/ajx_common.html",
-        data: params,
-        success: function(html) {
-            $("#divBlogContentsList").html(html);
-            $("[id^=spanBlogContentsTitle_]").ellipsis();
-            $('#divModalBlogContentsList').modal('show');
-            _blogIsSubmit = false;
-            return html;
-        },
-        error: function () {
-            alert('예기치 못한 오류로 인해 실패했습니다.');
-            _blogIsSubmit = false;
-        }
-    });
-}
-function setBlogContents(q_link) {
-    if (typeof q_link == 'undefined' || q_link == '') {
-        q_link = $("#listBlog [id^=q_link_]:checked").val();
-
-        if (!q_link) {
-            alert('블로그 컨텐츠를 선택하세요.');
-            return;
-        }
-    }
-    $("#btnSetBlogContents").html('<span class="fa fa-spinner fa-spin" style="width:' + $("#btnSetBlogContents").width() + 'px"></span>');
-    if(fromOther == 'n') document.location.href = '/inbox/insert.html?ref_blog_url=' + encodeURIComponent(q_link);
-    else if(fromOther == 'review') document.location.href = '/event/ins_review.html?seq=&review_seq=&ref_blog_url=' + encodeURIComponent(q_link);
-}
-function doChangeBlogSelectType(select_type) {
-    if (select_type == 'url') {
-        $("#top_blog_select_id").hide();
-        $("#top_blog_select_url").show();
-    } else {
-        $("#top_blog_select_url").hide();
-        $("#top_blog_select_id").show();
-    }
-
-}
-</script>
-
-<div class="modal fade" id="divBrowserGuideModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:100001">
-  <div class="modal-dialog" style="width:820px">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">브라우저 업데이트 안내</h4>
-      </div>
-      <div class="modal-body">
-        <!--
-            <h3>Internet Explorer 10 이하 버전을 사용중이시군요!</h3>
-            <p></p>
-            <h4 style="color:#de4830">레시피 등록은,</h4>
-            <h4 style="color:#de4830">IE 11이상 또는 크롬(Chrome) 브라우저 사용이 필수입니다.</h4>
-        -->
-            <div style="width:800px; height:560px; background:#fff; text-align:center;">
-              <div sthyle="padding-top:5px;"><img src="http://recipe1.ezmember.co.kr/img/update_icon.gif" /></div>
-              <div style="font-size:30px; font-weight:bold; color:#444; padding-top:25px;">브라우저를 최신버전으로 업그레이드 해주세요!</div>
-              <div style="font-size:18px; color:#777; padding-top:25px;">레시피 등록을 위해서는 지금 사용하고 있는<br />브라우저 버전을 업그레이드 하거나 다른 웹 브라우저를 사용해야 됩니다.</div>
-              <div style="font-size:18px; color:#777; padding-top:25px;">아래의 브라우저 사진을 클릭하여 업그레이드 하세요.</div>
-              <div style="padding-top:30px;">
-                <a href="https://www.google.com/chrome/" target="_blank" style="margin:0 4px;"><img src="http://recipe1.ezmember.co.kr/img/update_b_03.gif" alt="chrome" style="border:none;"></a>
-                <a href="http://windows.microsoft.com/ko-kr/internet-explorer/download-ie" target="_blank" style="margin:0 4px;"><img src="http://recipe1.ezmember.co.kr/img/update_b_02.gif" alt="IE" style="border:none;"></a>
-              </div>
-            </div>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+})(window,document,'script','dataLayer','GTM-PDPW2LX');</script>   
+<link rel="stylesheet" type="text/css" href="http://recipe1.ezmember.co.kr/static/css/bootstrap_20180417.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/font.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="http://recipe1.ezmember.co.kr/static/css/ez_recipe_20190221.css" />
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<link href="http://recipe1.ezmember.co.kr/img/icons/apple-touch-icon.png" rel="apple-touch-icon" />
+<link href="http://recipe1.ezmember.co.kr/img/icons/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
+<link href="http://recipe1.ezmember.co.kr/img/icons/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
+<link href="http://recipe1.ezmember.co.kr/img/icons/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+<link href="http://recipe1.ezmember.co.kr/img/icons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+<link href="http://recipe1.ezmember.co.kr/img/icons/icon-hires.png" rel="icon" sizes="192x192" />
+<link href="http://recipe1.ezmember.co.kr/img/icons/icon-normal.png" rel="icon" sizes="128x128" />
+<script type="text/javascript" src="http://recipe1.ezmember.co.kr/static/js/jquery-1.11.2.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="//static.criteo.net/js/ld/publishertag.js"></script>
+</head>
+<body>
+<jsp:include page="../include/header.jsp"></jsp:include>
 
 
 
@@ -1132,10 +830,10 @@ function getVideoThumb(url) {
             if (json['thumb_url']) {
                 setVideoPhoto('1', json['thumb_url'], json['thumb_url']);
 				$("#cok_video_src").val(json['video_src']);
-				if ($("#cok_video_url").val().indexOf('MultimediaFLVPlayer.nhn') > -1) {
-					$("#cok_video_url").val(json['video_src']);
+				if ($("#video_url").val().indexOf('MultimediaFLVPlayer.nhn') > -1) {
+					$("#video_url").val(json['video_src']);
 				}
-				$("#cok_video_url").attr('prev_url',$("#cok_video_url").val());
+				$("#video_url").attr('prev_url',$("#video_url").val());
 
 				if ($("#main_photo").val() == '') {
 					$.ajax({
@@ -1184,13 +882,14 @@ window.onbeforeunload = function() {
 }
 
 </script>
-<form name="insFrm" id="insFrm" method="post">
+<form name="insFrm" id="insFrm" action="./BoardAddAction.bo" method="post">
 <input type="hidden" name="q_mode" id="q_mode" value="save">
 <input type="hidden" name="cok_sq_board" id="cok_sq_board" value=""> <input type="hidden" name="newUploadFiles" value="">
 <input type="hidden" name="cok_reg_id" id="cok_reg_id" value="39584691" />
 <input type="hidden" name="cok_reg_type" id="cok_reg_type" value="input">
 <input type="hidden" name="ref_blog_url" id="ref_blog_url" value="">
 <input type="hidden" name="goods_no" id="goods_no" value=""> 
+<input type="hidden" name="board_id" id="board_id" value="1"> 
 <link rel="stylesheet" type="text/css" href="http://recipe1.ezmember.co.kr/static/css/jquery.tagit.css" /><style>
 .note-editor .note-dropzone { opacity: 0 !important; }
 ul.tagit {
@@ -1237,7 +936,7 @@ $(document).ready(function() {
 	});
 
         	//동영상 사진 관련 /////////////////////////////////////
-    $("#cok_video_url").blur(function() {
+    $("#video_url").blur(function() {
         if ($(this).val() != '' && $(this).val() != $(this).attr('prev_url')) {
             if ($(this).val().indexOf('http://') > -1 || $(this).val().indexOf('https://') > -1) {
                 getVideoThumb($.trim($(this).val()));
@@ -1321,9 +1020,9 @@ function doSubmit(q_mode)
     }
 }
 function validateRecipeForm(q_mode) {
-    if ($.trim($("#cok_title").val()) == '') {
+    if ($.trim($("#title").val()) == '') {
         alert('레시피 제목을 입력해 주세요.');
-        $("#cok_title").focus();
+        $("#title").focus();
         return isSubmit = false;
     }
 
@@ -1332,9 +1031,9 @@ function validateRecipeForm(q_mode) {
             alert('대표사진을 선택해 주세요.');
             return isSubmit = false;
         }
-        if ($.trim($("#cok_intro").val()) == '') {
+        if ($.trim($("#cooking_coment").val()) == '') {
             alert('요리소개 내용을 입력해 주세요.');
-            $("#cok_intro").focus();
+            $("#cooking_coment").focus();
             return isSubmit = false;
         }
         if ($("#cok_sq_category_1").val() == '') {
@@ -1362,19 +1061,19 @@ function validateRecipeForm(q_mode) {
 		if ($("#is_tv_recipe").prop('checked')) {
 
 		} else {
-			if ($("#cok_portion").val() == '') {
+			if ($("#cooking_serving").val() == '') {
                 alert('요리인원 선택해 주세요.');
-                $("#cok_portion").focus();
+                $("#cooking_serving").focus();
                 return isSubmit = false;
             }
-			if ($("#cok_time").val() == '') {
+			if ($("#cooking_time").val() == '') {
                 alert('요리시간을 선택해 주세요.');
-                $("#cok_time").focus();
+                $("#cooking_time").focus();
                 return isSubmit = false;
             }
-            if ($("#cok_degree").val() == '') {
+            if ($("#difficulty").val() == '') {
                 alert('난이도를 선택해 주세요.');
-                $("#cok_degree").focus();
+                $("#difficulty").focus();
                 return isSubmit = false;
             }
 		}
@@ -1667,15 +1366,15 @@ $(function() {
             <img id="mainPhotoHolder" onclick="browseMainFile()" src="http://recipe1.ezmember.co.kr/img/pic_none4.gif" style="width: 250px; height: 250px; cursor:pointer">
         </div>
       </div>
-      <div class="cont_line"><p class="cont_tit4">레시피 제목</p><input type="text" name="cok_title" id="cok_title" value="" class="form-control" placeholder="예) 소고기 미역국 끓이기" style="width:610px; "></div>
-      <div class="cont_line pad_b_25"><p class="cont_tit4">요리소개</p><textarea name="cok_intro" id="cok_intro" class="form-control step_cont" placeholder="이 레시피의 탄생배경을 적어주세요. 예) 남편의 생일을 맞아 소고기 미역국을 끓여봤어요. 어머니로부터 배운 미역국 레시피를 남편의 입맛에 맞게 고안했습니다." style="height:100px; width:610px; resize:none;"></textarea></div>
+      <div class="cont_line"><p class="cont_tit4">레시피 제목</p><input type="text" name="title" id="title" value="" class="form-control" placeholder="예) 소고기 미역국 끓이기" style="width:610px; "></div>
+      <div class="cont_line pad_b_25"><p class="cont_tit4">요리소개</p><textarea name="cooking_coment" id="cooking_coment" class="form-control step_cont" placeholder="이 레시피의 탄생배경을 적어주세요. 예) 남편의 생일을 맞아 소고기 미역국을 끓여봤어요. 어머니로부터 배운 미역국 레시피를 남편의 입맛에 맞게 고안했습니다." style="height:100px; width:610px; resize:none;"></textarea></div>
 
 	  <div class="cont_line pad_b_25"><p class="cont_tit4">동영상</p>
     	  <input type="hidden" name="video_photo" id="video_photo" value="">
           <input type="hidden" name="new_video_photo" id="new_video_photo" value="">
           <input type="hidden" name="del_video_photo" id="del_video_photo" value="">
 		  <input type="hidden" name="cok_video_src" id="cok_video_src" value="">
-		  <textarea name="cok_video_url" id="cok_video_url" class="form-control step_cont" prev_url="" placeholder="동영상이 있으면 주소를 입력하세요.(Youtube,네이버tvcast,다음tvpot 만 가능) 예)http://youtu.be/lA0Bxo3IZmM" style="height:100px; width:380px; resize:none;"></textarea>
+		  <textarea name="video_url" id="video_url" class="form-control step_cont" prev_url="" placeholder="동영상이 있으면 주소를 입력하세요.(Youtube,네이버tvcast,다음tvpot 만 가능) 예)http://youtu.be/lA0Bxo3IZmM" style="height:100px; width:380px; resize:none;"></textarea>
 		  <div style="position:absolute;left:-3000px"><input type="file" name="q_video_file" id="q_video_file" file_gubun="video" accept="jpeg,png,gif" style="display:;width:0px;height:0px;font-size:0px;" text=""></div>
 		  <div id="divVideoPhotoBox" is_over="0" class="thumb_m">
     		  <img id="videoPhotoHolder" src="http://recipe1.ezmember.co.kr/img/pic_none5.gif" style="width: 177px; height: 100px;">
@@ -1756,7 +1455,7 @@ $(function() {
       </div>
       <div class="cont_line"><p class="cont_tit4">요리정보</p>
       인원
-        <select name="cok_portion" id="cok_portion"  text="인원">
+        <select name="cooking_serving" id="cooking_serving"  text="인원">
 <option value="" >인원</option><option value="1">1인분</option>
 <option value="2">2인분</option>
 <option value="3">3인분</option>
@@ -1765,7 +1464,7 @@ $(function() {
 <option value="6">6인분이상</option>
 </select>
       <span class="pad_l_30">시간 </span>
-        <select name="cok_time" id="cok_time"  text="요리시간">
+        <select name="cooking_time" id="cooking_time"  text="요리시간">
 <option value="" >시간</option><option value="5">5분이내</option>
 <option value="10">10분이내</option>
 <option value="15">15분이내</option>
@@ -1777,7 +1476,7 @@ $(function() {
 <option value="999">2시간이상</option>
 </select>
       <span class="pad_l_30">난이도 </span>
-        <select name="cok_degree" id="cok_degree"  text="난이도">
+        <select name="difficulty" id="difficulty"  text="난이도">
 <option value="" >난이도</option><option value="1">아무나</option>
 <option value="2">초급</option>
 <option value="3">중급</option>
@@ -2101,119 +1800,7 @@ function openStepGuide()
     <!-- /.modal-dialog -->
 </div>
 <input type="hidden" name="isRestrict" value="false" />
-<script>
-var curVRPage = 1;
-var totalVRcnt = 0;
-function getViewRecipeList(page)
-{
-    if($("#rRecipContDivPage_"+page).length > 0)
-    {
-        $("[id^='rRecipContDivPage_']").hide();
-        $("#rRecipContDivPage_"+page).show();
-        curVRPage = page;
-        return ;
-    }
-    var rvArr = storageUtil.get('stRecentViewRecipe');
-    if(!rvArr || rvArr == 'FAIL')
-    {
-        $("#recentRecipeDiv").hide();
-        return ;
-    }
-    totalVRcnt = rvArr.length;
-    var scale = 6;
-    var skip = (page-1) * scale;
-    var lastpage = Math.ceil(totalVRcnt/scale);
-    var hstr = '';
-    hstr += '<div id="rRecipContDivPage_'+page+'" class="row">';
-    if(page > 1) hstr += '<a href="javascript:void(0);" class="list_btn_pre" onClick="getViewRecipeList('+(page-1)+')"><img src="http://recipe1.ezmember.co.kr/img/btn_arrow1_l.png" alt="이전"></a>';
-    if(page < lastpage) hstr += '<a href="javascript:void(0);" class="list_btn_next" onClick="getViewRecipeList('+(page+1)+')"><img src="http://recipe1.ezmember.co.kr/img/btn_arrow1_r.png" alt="다음"></a>';
-    for(var i=skip; i<skip+scale; i++)
-    {
-        var rvs = rvArr[i];
-        if(!rvs) continue;
-        hstr += '<div class="col-xs-2">';
-        hstr += '<a class="thumbnail" href="/recipe/'+rvs.seq+'"><img src="'+rvs.thumb+'" style="width:180px; height:180px;">';
-        hstr += '<div class="caption elipsis_rrtitle"><b>'+rvs.title+'</b></div></a>';
-        hstr += '</div>';
-    }
-    hstr += '</div>';
-    if(page != 1 && curVRPage > page) $("#recentRecipeContDiv").prepend(hstr);
-    else  $("#recentRecipeContDiv").append(hstr);
-    getViewRecipeList(page);
-    $(".elipsis_rrtitle").ellipsis({row: 2});
-}
+<jsp:include page="../include/footer.jsp"></jsp:include>
 
-$(document).ready(function () {
-    getViewRecipeList(1);
-})
-</script>
-<div id="recentRecipeDiv" class="container">
-  <div class="rcp_lately_list">
-    <h3>최근 본 레시피</h3>
-    <div id="recentRecipeContDiv"></div>
-  </div>
-</div>
-<script type="text/javascript">
-<!--
-$(document).ready(function() {
-    $('#appDownLayerBtn').click(function (e) {
-        // Used to stop the event bubbling..
-        e.stopPropagation();
-        if ($('.app_layer').is(':visible')) {
-            $('.app_layer').hide();
-        } else {
-            $('.app_layer').show();
-        }
-    });
-    $(document).click(function () {
-        $('.app_layer').hide();
-    });
-});
-
-function customerPropose()
-{
-    if(!$("#customerSend").val()) {
-        alert('의견을 입력해주세요.');
-        $("#customerSend").focus();
-        return false;
-    }
-
-    $.ajax({
-        type: "POST",
-        url: "/customer/insert.html",
-        data: {
-            q_mode : 'insert',
-            bid : '4',
-			board_txt : $("#customerSend").val()
-        },
-        dataType: "json",
-        success: function(result) {
-			if (result.result == 'SUCCESS') {
-	            alert('의견이 접수되었습니다. 감사합니다.');
-	            $("#customerSend").val('');
-			} else if (result.result == 'ERROR') {
-                alert(result.msg);
-            }
-        }
-    });
-}
-//-->
-</script>
-
-<script type="text/javascript" src="http://recipe1.ezmember.co.kr/static/js/jquery-ui-1.11.4.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://recipe1.ezmember.co.kr/static/js/tag-it.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://recipe1.ezmember.co.kr/static/js/ez_dialog.min_20160430.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://recipe1.ezmember.co.kr/static/js/coreutil.min_20170112.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://recipe1.ezmember.co.kr/static/js/ui.min_20150609.js" charset="utf-8"></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-62003031-2', 'auto');
-  ga('require', 'displayfeatures');
-  ga('send', 'pageview');
-</script>
-<img src="//kr-gmtdmp.mookie1.com/t/v2/learn?tagid=V2_255869&src.rand=[timestamp]" style="display:none;"/>
-<img src="//kr-gmtdmp.mookie1.com/t/v2/activity?tagid=V2_281041&src.rand=[timestamp]" style="display:none;"/>
-<iframe src="//static-tagr.gd1.mookie1.com/s1/sync-apac.html?cc=KR" style="display:none;"></iframe>
+</body>
+</html>
