@@ -9,6 +9,7 @@ public class BoardModifyAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+		
 	}
 
 }
