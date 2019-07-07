@@ -580,6 +580,7 @@ public class BoardDAO {
       BoardBean board = null;
       RecipeBean recipe = null;
       Cooking_orderBean cooking = null;
+      List orderList = new ArrayList();
 
       try{
          pstmt = con.prepareStatement(
@@ -591,7 +592,6 @@ public class BoardDAO {
             master = new MasterBean();
             board = new BoardBean();
             recipe = new RecipeBean();
-            cooking = new Cooking_orderBean();
             
 
             board.setBoard_num(rs.getInt("BOARD_NUM"));
@@ -629,10 +629,14 @@ public class BoardDAO {
          rs = pstmt.executeQuery();
          
          while(rs.next()) {
+             cooking = new Cooking_orderBean();
         	 cooking.setCooking_content(rs.getString("COOKING_CONTENT"));
         	 cooking.setCooking_photo(rs.getString("COOKING_PHOTO"));
         	 cooking.setStep(rs.getInt("STEP"));
+        	 orderList.add(cooking);
          }
+         
+         master.setCokOrderList(orderList);
          
          return master;
       }catch(Exception ex){
