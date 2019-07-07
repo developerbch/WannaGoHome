@@ -158,8 +158,8 @@ public class BoardDAO {
 	}
 
 
-	 //게시글 목록 받아오기
-	   public List getBoardList(int page,int limit) {
+	 //레시피 목록 받아오기
+	   public List getBoardRecipeList(int page,int limit) {
 	      String board_list_sql="select * from "+
 	      "(select rownum rnum, e.* from " + 
 	      "(select bd.BOARD_NUM, bd.BOARD_ID, bd.TITLE, bd.ID, bd.NICK, rc.THUMBNAIL " + 
@@ -196,7 +196,7 @@ public class BoardDAO {
 	         
 	         return list;
 	      }catch(Exception ex){
-	         System.out.println("getBoardList 에러 : " + ex);
+	         System.out.println("getBoardRecipeList 에러 : " + ex);
 	      }finally{
 	         if(rs!=null) try{rs.close();}catch(SQLException ex){}
 	         if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
@@ -205,6 +205,170 @@ public class BoardDAO {
 	   }
 
 
+	   
+	   
+	   
+	   
+	 //토크 목록 받아오기
+	   public List getBoardTalkList(int page,int limit) {
+	      String board_list_sql="select * from "+
+	      "(select rownum rnum, e.* from " + 
+	      "(select bd.BOARD_NUM, bd.BOARD_ID, bd.ID, bd.NICK, tk.TALK_PHOTO, tk.TALK_CONTENT   " + 
+	      "from BOARD bd inner join TALK tk on bd.BOARD_NUM = tk.BOARD_NUM " + 
+	      "where BOARD_ID=2 order by UPLOAD_DATE desc) e) "+
+	      "where rnum>=? and rnum<=?";
+	      
+	      System.out.println(board_list_sql);
+	      List list = new ArrayList();
+	      int startrow=(page-1)*10+1; //읽기 시작할 row 번호.
+	      int endrow=startrow+limit-1; //읽을 마지막 row 번호.      
+	      
+	      try{
+	         pstmt = con.prepareStatement(board_list_sql);
+	         pstmt.setInt(1, startrow);
+	         pstmt.setInt(2, endrow);
+	         System.out.println(pstmt.toString());
+	         rs = pstmt.executeQuery();
+	         
+	         while(rs.next()){
+	            BoardBean board = new BoardBean();
+	            TalkBean talk = new TalkBean();
+	            MasterBean master = new MasterBean();
+	            board.setBoard_num(rs.getInt("BOARD_NUM"));
+	            board.setBoard_id(rs.getInt("BOARD_ID"));
+	            board.setId(rs.getString("ID"));
+	            board.setNick(rs.getString("NICK"));
+	            talk.setTalk_photo(rs.getString("TALK_PHOTO"));
+	            talk.setTalk_content(rs.getString("TALK_PHOTO"));
+	            master.setBoardbean(board);
+	            master.setTalkbean(talk);
+	            list.add(master);
+	         }
+	         
+	         return list;
+	      }catch(Exception ex){
+	         System.out.println("getBoardTalkList 에러 : " + ex);
+	      }finally{
+	         if(rs!=null) try{rs.close();}catch(SQLException ex){}
+	         if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+	      }
+	      return null;
+	   }
+
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+
+		 //요리정보 목록 받아오기
+		   public List getBoardCooking_infoList(int page,int limit) {
+		      String board_list_sql="select * from "+
+		      "(select rownum rnum, e.* from " + 
+		      "(select bd.BOARD_NUM, bd.BOARD_ID, bd.ID, bd.NICK, ci.CI_CONTENT,  ci.CI_PHOTO " + 
+		      "from BOARD bd inner join COOKING_INFO ci on bd.BOARD_NUM = ci.BOARD_NUM " + 
+		      "where BOARD_ID=3 order by UPLOAD_DATE desc) e) "+
+		      "where rnum>=? and rnum<=?";
+		      
+		      System.out.println(board_list_sql);
+		      List list = new ArrayList();
+		      int startrow=(page-1)*10+1; //읽기 시작할 row 번호.
+		      int endrow=startrow+limit-1; //읽을 마지막 row 번호.      
+		      
+		      try{
+		         pstmt = con.prepareStatement(board_list_sql);
+		         pstmt.setInt(1, startrow);
+		         pstmt.setInt(2, endrow);
+		         System.out.println(pstmt.toString());
+		         rs = pstmt.executeQuery();
+		         
+		         while(rs.next()){
+		            BoardBean board = new BoardBean();
+		            Cooking_infoBean cooking_info = new Cooking_infoBean();
+		            MasterBean master = new MasterBean();
+		            board.setBoard_num(rs.getInt("BOARD_NUM"));
+		            board.setBoard_id(rs.getInt("BOARD_ID"));
+		            board.setId(rs.getString("ID"));
+		            board.setNick(rs.getString("NICK"));
+		            cooking_info.setCi_content(rs.getString("CI_CONTENT"));
+		            cooking_info.setCi_photo(rs.getString("CI_PHOTO"));
+		            master.setBoardbean(board);
+		            master.setCooking_infobean(cooking_info);
+		            list.add(master);
+		         }
+		         
+		         return list;
+		      }catch(Exception ex){
+		         System.out.println("getBoardCooking_infoList 에러 : " + ex);
+		      }finally{
+		         if(rs!=null) try{rs.close();}catch(SQLException ex){}
+		         if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+		      }
+		      return null;
+		   }
+
+		   
+		   
+
+		   
+
+			 //이벤트 목록 받아오기
+			   public List getBoardEventList(int page,int limit) {
+			      String board_list_sql="select * from "+
+			      "(select rownum rnum, e.* from " + 
+			      "(select bd.BOARD_NUM, bd.BOARD_ID, bd.ID, bd.NICK, ev.START_DATE, ev.END_DATE ev.EVENT_CONTENT,  ev.EVENT_PHOTO " + 
+			      "from BOARD bd inner join Event ev on bd.BOARD_NUM = ev.BOARD_NUM " + 
+			      "where BOARD_ID=4 order by UPLOAD_DATE desc) e) "+
+			      "where rnum>=? and rnum<=?";
+			      
+			      System.out.println(board_list_sql);
+			      List list = new ArrayList();
+			      int startrow=(page-1)*10+1; //읽기 시작할 row 번호.
+			      int endrow=startrow+limit-1; //읽을 마지막 row 번호.      
+			      
+			      try{
+			         pstmt = con.prepareStatement(board_list_sql);
+			         pstmt.setInt(1, startrow);
+			         pstmt.setInt(2, endrow);
+			         System.out.println(pstmt.toString());
+			         rs = pstmt.executeQuery();
+			         
+			         while(rs.next()){
+			            BoardBean board = new BoardBean();
+			            EventBean event = new EventBean();
+			            MasterBean master = new MasterBean();
+			            board.setBoard_num(rs.getInt("BOARD_NUM"));
+			            board.setBoard_id(rs.getInt("BOARD_ID"));
+			            board.setId(rs.getString("ID"));
+			            board.setNick(rs.getString("NICK"));
+			            event.setStart_date(rs.getString("START_DATE"));
+			            event.setEnd_date(rs.getString("END_DATE"));
+			            event.setEvent_content(rs.getString("Event_CONTENT"));
+			            event.setEvent_photo(rs.getString("Event_PHOTO"));
+			            master.setBoardbean(board);
+			            master.setEventbean(event);
+			            list.add(master);
+			         }
+			         
+			         return list;
+			      }catch(Exception ex){
+			         System.out.println("getBoardEventList 에러 : " + ex);
+			      }finally{
+			         if(rs!=null) try{rs.close();}catch(SQLException ex){}
+			         if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+			      }
+			      return null;
+			   }
+	   
+	   
+	   
+	   
+	   
+	   
+		   
+		   
 
 	//글 등록(talk).
 	public boolean boardInsertTalk(TalkBean talk){
