@@ -6,17 +6,14 @@
 <head>
 <%
 	String pagefile = request.getParameter("pagefile");
-	if(pagefile==null) { pagefile="board_home_content"; }
-	else if(pagefile.equals("home")) { pagefile="board_home_content"; }
+	if(pagefile==null) { pagefile="board_recipe_content"; }
 	else if(pagefile.equals("recipe")) { pagefile="board_recipe_content"; }
 	else if(pagefile.equals("talk")) { pagefile="board_talk_content"; }
 	else if(pagefile.equals("cookinfo")) { pagefile="board_cookinfo_content"; }
 	else if(pagefile.equals("brand")) { pagefile="board_brand_content"; }
 	else if(pagefile.equals("chef")) { pagefile="board_chef_content"; }
-	else if(pagefile.equals("ranking")) { pagefile="board_ranking_content"; }
 	else if(pagefile.equals("event")) { pagefile="board_event_content"; }
 	else if(pagefile.equals("myhome")) { pagefile="board_myhome_content"; }
-	
 %>
 <meta charset="EUC-KR">
 <title>TEAM5_만개의레시피</title>
@@ -42,47 +39,12 @@
 <jsp:include page="../include/footer.jsp"></jsp:include>
 </div>
 
-<%--
-<table border="1">
-<tr>
-	<td width=100%>
-	<jsp:include page="../include/header.jsp"></jsp:include>
-	</td>
-</tr>
-<tr>
-	<td width=100%>
-	<jsp:include page='<%="./board_content/"+pagefile+".jsp"%>'></jsp:include>
-	</td>
-</tr>
-<tr>
-	<td width=100%>
-	<jsp:include page="../include/footer.jsp"></jsp:include>
-	</td>
-</tr>
-</table>
-
-	<jsp:include page="../include/header.jsp"></jsp:include>
-	<jsp:include page='<%="./board_content/"+pagefile+".jsp"%>'></jsp:include>
-	<jsp:include page="../include/footer.jsp"></jsp:include>
-
- --%>
 
 <%--
 ** 경로가 맞음 *******************************************************************
 <jsp:include page="./board_content/board_home_content.jsp"></jsp:include>
 ******************************************************************************
-<jsp:include page=<%= "./board_content/"+pagefile%>></jsp:include>
-<jsp:include page=<%= "./board_content/"pagefile%>></jsp:include>
-<jsp:include page="./board_content/"<%=pagefile%>></jsp:include>
-<jsp:include page="http://localhost/team5/BoardContent.bo"></jsp:include>
-<jsp:include page=<%=pagefile%>></jsp:include>
-<jsp:include page=<%= "./board/board_content/"+pagefile%>></jsp:include>
-<jsp:include page=<%= "../board/board_content/"+pagefile%>></jsp:include>
-<jsp:include page="../board/board_content/board_home_content.jsp"></jsp:include>
-<jsp:include page=<%=.\board_content\ + pagefile+ ".jsp" %>></jsp:include>
-<jsp:include page='/board_content/<%=pagefile+".jsp"%>'></jsp:include>
- --%>
-
+--%>
 
 </body>
 </html>

@@ -1,5 +1,7 @@
 package net.board.action;
 
+import java.util.Enumeration;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -22,58 +24,79 @@ public class RecipeAddAction implements Action {
 		ActionForward forward=new ActionForward();
 
 		HttpSession session=request.getSession();
-//		
-//		String realFolder="";
-//		String saveFolder="boardupload";
-//
-//		int fileSize=5*1024*1024;
-//
-//		realFolder=request.getRealPath(saveFolder);
+		
+		String realFolder="";
+		String saveFolder="boardupload";
+
+		int fileSize=5*1024*1024;
+
+		realFolder=request.getRealPath(saveFolder);
 
 		int result=0;
 		boolean result2=false;
 		boolean result3=false;
 
 		try{
-//			MultipartRequest multi=null;
-//
-//			multi=new MultipartRequest(request,
-//					realFolder,
-//					fileSize,
-//					"euc-kr",
-//					new DefaultFileRenamePolicy());
+			MultipartRequest multi=null;
+
+			multi=new MultipartRequest(request,
+					realFolder,
+					fileSize,
+					"euc-kr",
+					new DefaultFileRenamePolicy());
 
 			//BoardBean
-	   		System.out.println(session.getAttribute("id"));
-	   		System.out.println(session.getAttribute("nick"));
-			boarddata.setBoard_id(Integer.parseInt(request.getParameter("board_id")));
-			boarddata.setTitle(request.getParameter("title"));
+			boarddata.setBoard_id(Integer.parseInt(multi.getParameter("board_id")));
+			boarddata.setTitle(multi.getParameter("title"));
 			boarddata.setId((String)session.getAttribute("id"));
-		/*	boarddata.setBOARD_FILE(
-		*			multi.getFilesystemName(
-		*					(String)multi.getFileNames().nextElement()));
-		*/	boarddata.setNick((String)session.getAttribute("nick"));
-			boarddata.setUpload_date(request.getParameter("upload_date"));
-			//RecipeBean
+			boarddata.setNick((String)session.getAttribute("nick"));
+			boarddata.setUpload_date(multi.getParameter("upload_date"));
+			result=boarddao.boardInsert(boarddata);
 			
-			recipedata.setCooking_serving(request.getParameter("cooking_serving"));
-			recipedata.setCooking_time(request.getParameter("cooking_time"));
-			recipedata.setDifficulty(request.getParameter("difficulty"));
-			recipedata.setVideo_url(request.getParameter("video_url"));
-			recipedata.setEssential_ingredient(request.getParameter("essential_ingredient"));
+			//RecipeBean
+			recipedata.setCooking_serving(multi.getParameter("cooking_serving"));
+			recipedata.setCooking_time(multi.getParameter("cooking_time"));
+			recipedata.setDifficulty(multi.getParameter("difficulty"));
+			recipedata.setVideo_url(multi.getParameter("video_url"));
+			//필수재료
+			String []essential_ingredient_nm = multi.getParameterValues("cok_material_nm_1[]");
+			String []essential_ingredient_amt = multi.getParameterValues("cok_material_amt_1[]");
+			for(int i = 0; i < essential_ingredient_nm.length; i++) {
+				if(essential_ingredient_nm[i].equals(""))
+					break;
+				else {
+					if(i == 0) {
+						recipedata.setEssential_ingredient(essential_ingredient_nm[i] + "-" + essential_ingredient_amt[i]);
+					} else {
+						recipedata.setEssential_ingredient(recipedata.getEssential_ingredient() + "*" + 
+								essential_ingredient_nm[i] + "-" + essential_ingredient_amt[i]);
+					}
+				}
+//				if(i < essential_ingredient_nm.length-1)
+//					recipedata.setEssential_ingredient(recipedata.getEssential_ingredient() + "*");
+			}
+			//recipedata.setEssential_ingredient(request.getParameter("essential_ingredient"));
 			recipedata.setSelective_ingredient(request.getParameter("selective_ingredient"));
-			recipedata.setTag(request.getParameter("tag"));
-			recipedata.setThumbnail(request.getParameter("thumbnail"));
-			recipedata.setCooking_comment(request.getParameter("cooking_comment"));
+			recipedata.setTag(multi.getParameter("tag"));
+//			Enumeration<?> files = multi.getFileNames();
+//		    String file1 = (String)files.nextElement();
+//		    String filename1 = multi.getFilesystemName(file1);
+//		    recipedata.setThumbnail(filename1);
+			recipedata.setThumbnail(multi.getFilesystemName("main_img_file"));
+//			System.out.println(recipedata.getThumbnail());
+			recipedata.setCooking_comment(multi.getParameter("cooking_comment"));
+			result2=boarddao.boardInsertRecipe(recipedata, result);
 			
 			//Cooking_orderBean
-			orderdata.setCooking_content(request.getParameter("cooking_content"));
-			orderdata.setCooking_photo(request.getParameter("cooking_photo"));
-			orderdata.setStep(1);	//Integer.parseInt(request.getParameter("step"))
-			
-			result=boarddao.boardInsert(boarddata);
-			result2=boarddao.boardInsertRecipe(recipedata, result);
-			result3=boarddao.boardInsertOrder(orderdata, result);
+			for(int i = 1; ; i++) {
+				if(multi.getParameter("step_text_" + i) == null) {
+					break;
+				}
+				orderdata.setCooking_content(multi.getParameter("step_text_" + i));
+				orderdata.setCooking_photo(multi.getFilesystemName("step_img_file_" + i));
+				orderdata.setStep(i);//Integer.parseInt(request.getParameter("step"))
+				result3=boarddao.boardInsertOrder(orderdata, result);
+			}	
 			
 			if(result==0 || result2==false || result3==false){
 				System.out.println("레시피 게시판 등록 실패");
@@ -90,7 +113,5 @@ public class RecipeAddAction implements Action {
 		}
 		return null;
 	}
-
-
 
 }

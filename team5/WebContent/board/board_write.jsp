@@ -882,7 +882,7 @@ window.onbeforeunload = function() {
 }
 
 </script>
-<form name="insFrm" id="insFrm" action="./BoardAddAction.bo" method="post">
+<form name="insFrm" id="insFrm" action="./BoardAddAction.bo" method="post" enctype="multipart/form-data" >
 <input type="hidden" name="q_mode" id="q_mode" value="save">
 <input type="hidden" name="cok_sq_board" id="cok_sq_board" value=""> <input type="hidden" name="newUploadFiles" value="">
 <input type="hidden" name="cok_reg_id" id="cok_reg_id" value="39584691" />
@@ -1031,9 +1031,9 @@ function validateRecipeForm(q_mode) {
             alert('대표사진을 선택해 주세요.');
             return isSubmit = false;
         }
-        if ($.trim($("#cooking_coment").val()) == '') {
+        if ($.trim($("#cooking_comment").val()) == '') {
             alert('요리소개 내용을 입력해 주세요.');
-            $("#cooking_coment").focus();
+            $("#cooking_comment").focus();
             return isSubmit = false;
         }
         if ($("#cok_sq_category_1").val() == '') {
@@ -1357,7 +1357,30 @@ $(function() {
         </div>
 	</div>
     <div class="cont_box pad_l_60">
+      <script type="text/javascript">
+      	var sel_file;
+      	$(document).ready(function() {
+      		$("#main_img_file").on("change", handleImageFileSelect);
+      	});
+      	function handleImageFileSelect(e) {
+      		var files = e.target.files;
+      		var filesArr = Array.prototype.slice.call(files);
+      		filesArr.forEach(function(f) {
+      			if(!f.type.match("image.*")) {
+      				alert("이미지 파일만 가능합니다");
+      				return;
+      			}
+      			sel_file = f;
+      			var reader = new FileReader();
+      			reader.onload = function(e) {
+      				$("#mainPhotoHolder").attr("src", e.target.result);
+      			}
+      			reader.readAsDataURL(f);
+      		});
+      	}
+	  </script>
       <div id="divMainPhotoUpload" class="cont_pic2">
+      	<input type="file" name="main_img_file" id="main_img_file" file_gubun="main" accept="jpeg,png,gif" style="width:250px;height:30px;" text="">
         <input type="hidden" name="main_photo" id="main_photo" value="">
         <input type="hidden" name="new_main_photo" id="new_main_photo" value="">
 		<input type="hidden" name="del_main_photo" id="del_main_photo" value="">
@@ -1367,7 +1390,7 @@ $(function() {
         </div>
       </div>
       <div class="cont_line"><p class="cont_tit4">레시피 제목</p><input type="text" name="title" id="title" value="" class="form-control" placeholder="예) 소고기 미역국 끓이기" style="width:610px; "></div>
-      <div class="cont_line pad_b_25"><p class="cont_tit4">요리소개</p><textarea name="cooking_coment" id="cooking_coment" class="form-control step_cont" placeholder="이 레시피의 탄생배경을 적어주세요. 예) 남편의 생일을 맞아 소고기 미역국을 끓여봤어요. 어머니로부터 배운 미역국 레시피를 남편의 입맛에 맞게 고안했습니다." style="height:100px; width:610px; resize:none;"></textarea></div>
+      <div class="cont_line pad_b_25"><p class="cont_tit4">요리소개</p><textarea name="cooking_comment" id="cooking_comment" class="form-control step_cont" placeholder="이 레시피의 탄생배경을 적어주세요. 예) 남편의 생일을 맞아 소고기 미역국을 끓여봤어요. 어머니로부터 배운 미역국 레시피를 남편의 입맛에 맞게 고안했습니다." style="height:100px; width:610px; resize:none;"></textarea></div>
 
 	  <div class="cont_line pad_b_25"><p class="cont_tit4">동영상</p>
     	  <input type="hidden" name="video_photo" id="video_photo" value="">
@@ -1512,7 +1535,7 @@ $(function() {
           <div id="divStepItem_STEP" class="step">
             <p id="divStepNum_STEP" class="cont_tit2_1" style="cursor:pointer">Step 1</p>
             <div id="divStepText_STEP" style="display:inline-block">
-                <textarea name="step_text[]" id="step_text_STEP" class="form-control step_cont" placeholder="" style="height:160px; width:430px; resize:none;"></textarea>
+                <textarea name="step_text_STEP" id="step_text_STEP" class="form-control step_cont" placeholder="" style="height:160px; width:430px; resize:none;"></textarea>
             </div>
             <div id="divStepUpload_STEP" style="display:inline-block">
                 <input type="hidden" name="step_no[]" id="step_no_STEP" value="">
@@ -1532,6 +1555,7 @@ $(function() {
                 <a href="javascript:delStep(__STEP)"><span class="glyphicon glyphicon-remove"></span></a>
             </div>
             <div style="width:580px;border:2px solid #74b243;margin:5px 200px 5px;">
+            <input type="file" name="step_img_file_STEP" id="step_img_file_STEP" file_gubun="step" accept="jpeg,png,gif" style="width:250px;height:30px;" text="" />
           <div style="padding:5px;">
               <a href="javascript:void(0);" id="stepBtn_material_STEP" class="btn btn-xs btn-default" style="width:70px;height:26px;"><img src="http://recipe1.ezmember.co.kr/img/mobile/icon_material.png?v.1" style="width:16px;height:16px;"> 재료</a>
               <a href="javascript:void(0);" id="stepBtn_cooker_STEP" class="btn btn-xs btn-default" style="width:70px;height:26px;"><img src="http://recipe1.ezmember.co.kr/img/mobile/icon_tool.png?v.1" style="width:16px;height:16px;"> 도구</a>
@@ -1550,6 +1574,28 @@ $(function() {
             </div>
 
           </div>
+          <script type="text/javascript">
+	      	var sel_file;
+	      	$(document).ready(function() {
+	      		$("#step_img_file_STEP").on("change", handleIStepmageFileSelect);
+	      	});
+	      	function handleIStepmageFileSelect(e) {
+	      		var files = e.target.files;
+	      		var filesArr = Array.prototype.slice.call(files);
+	      		filesArr.forEach(function(f) {
+	      			if(!f.type.match("image.*")) {
+	      				alert("이미지 파일만 가능합니다");
+	      				return;
+	      			}
+	      			sel_file = f;
+	      			var reader = new FileReader();
+	      			reader.onload = function(e) {
+	      				$("#stepPhotoHolder_STEP").attr("src", e.target.result);
+	      			}
+	      			reader.readAsDataURL(f);
+	      		});
+	      	}
+		  </script>
       </div><!--/step template-->
 
       <div class="btn_add mag_b_25" style="padding:0 0 20px 180px; width:820px;"><button type="button" onclick="addStep()" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span>순서추가</button></div>
@@ -1609,7 +1655,7 @@ $(function() {
 
     <div class="cont_box pad_l_60">
     <p class="cont_tit4">태그</p>
-    <input type="hidden" name="boa_tx_tag" value="" id="mySingleFieldTags" style="width:100%">
+    <input type="hidden" name="tag" value="" id="mySingleFieldTags" style="width:100%">
     <span style="display:block; color:#666; margin-bottom:-8px;margin-left:140px">주재료, 목적, 효능, 대상 등을 태그로 남겨주세요.<em style="font-style:normal; color:#999; padding-left:8px;">예) 돼지고기, 다이어트, 비만, 칼슘, 감기예방, 이유식, 초간단</em></span>
     </div><!--/cont_box-->
 

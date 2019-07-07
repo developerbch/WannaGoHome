@@ -59,45 +59,9 @@ function doRTKeyword()
 	<div class="gnb_top_wrap">
 		<div class="gnb_top">
 			<h1>
-				<a href="./BoardContent.bo"><img src="http://recipe1.ezmember.co.kr/img/logo4.png" alt="로고"></a>
-			</h1>
-			<div class="gnb_search">
-				<form id="frmTopRecipeSearch" method="get"
-					action="/recipe/list.html">
-					<div class="input-group">
-						<input id="srhRecipeText" name="q" type="text"
-							class="form-control" placeholder="" value=""
-							style="ime-mode: active;"> <span class="input-group-btn">
-							<button class="btn btn-default" type="button"
-								onClick="$('#frmTopRecipeSearch').submit();">
-								<span class="glyphicon glyphicon-search"></span>
-							</button>
-						</span>
-					</div>
-				</form>
-				<div class="gnb_search_word">
-					<ul id="RtwordDiv_1" style="display: none;">
-						<li><a href="/recipe/list.html?q=감자">감자</a></li>
-						<li><a href="/recipe/list.html?q=도시락">도시락</a></li>
-						<li><a href="/recipe/list.html?q=도시락반찬">도시락반찬</a></li>
-						<li><a href="/recipe/list.html?q=주먹밥">주먹밥</a></li>
-						<li><a href="/recipe/list.html?q=감자조림">감자조림</a></li>
-					</ul>
-					<ul id="RtwordDiv_2" style="display: none;">
-						<li><a href="/recipe/list.html?q=샌드위치">샌드위치</a></li>
-						<li><a href="/recipe/list.html?q=김밥">김밥</a></li>
-						<li><a href="/recipe/list.html?q=비빔국수">비빔국수</a></li>
-						<li><a href="/recipe/list.html?q=다이어트">다이어트</a></li>
-						<li><a href="/recipe/list.html?q=떡볶이">떡볶이</a></li>
-					</ul>
-					<div class="gnb_search_btn">
-						<a href="javascript:void(0);" onClick="doRTKeyword()"><img
-							src="http://recipe1.ezmember.co.kr/img/btn_arrow2_l.gif" alt="이전"></a>
-						<a href="javascript:void(0);" onClick="doRTKeyword()"><img
-							src="http://recipe1.ezmember.co.kr/img/btn_arrow2_r.gif" alt="다음"></a>
-					</div>
-				</div>
-			</div>
+				<a href="./board_admin_content.jsp"><img src="http://recipe1.ezmember.co.kr/img/logo4.png" alt="로고"></a>
+				 관리자페이지</h1>
+			
 			<ul class="gnb_right">
 				<%
 					if(id == null) {
@@ -156,14 +120,11 @@ function doRTKeyword()
 
    <div class="gnb_nav">
       <ul class="gnb_nav_ea10">
-         <li><a href="./BoardContent.bo?pagefile=recipe" id="recipepage">레시피</a></li>
-         <li><a href="./BoardContent.bo?pagefile=talk" id="talkpage">토크</a></li>
-         <li><a href="./BoardContent.bo?pagefile=cookinfo" id="cookinfopage">요리정보</a></li>
-         <li><a href="./BoardContent.bo?pagefile=brand" id="brandpage">브랜드</a></li>
-         <li><a href="./BoardContent.bo?pagefile=chef" id="chefpage">쉐프</a></li>
-         <li><a href="./BoardContent.bo?pagefile=event" id="eventpage">이벤트</a></li>
-         <li><a href="./BoardContent.bo?pagefile=myhome" id="myhomepage">MY홈</a></li>
-      </ul>
+         <li><a href="./board_admin_content.jsp?pagefile=recipe" id="homepage">레시피</a></li>
+         <li><a href="./board_admin_content.jsp?pagefile=cookinfo" id="recipepage">요리정보</a></li>
+         <li><a href="./board_admin_content.jsp?pagefile=event" id="talkpage">이벤트</a></li>
+         <li><a href="./board_admin_content.jsp?pagefile=management" id="cookinfopage">회원관리</a></li>
+      </ul>   		
    </div>
 </div>
 

@@ -5,14 +5,14 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import net.board.db.BoardDAO;
 
-public class BoardListAction implements Action {
+public class BoardRecipeListAction implements Action {
 
+	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//TODO: 각 게시판 별 리스트 한 액션으로 받아올 수 있으면 한 액션으로 통합하기
+		// TODO 보드리스트액션으로 통합 가능하면 통합하기
 		BoardDAO boarddao=new BoardDAO();
 		List boardlist=new ArrayList();
 		
@@ -44,7 +44,7 @@ public class BoardListAction implements Action {
 		
 		ActionForward forward= new ActionForward();
 	   	forward.setRedirect(false);
-   		forward.setPath("./board/");//url수정
+   		forward.setPath("./board/board_recipe_content.jsp");
 		return forward;
 	}
 
