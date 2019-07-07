@@ -1,10 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-
-        <div id="contents_area" class="col-xs-9">
-
-
-    
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
@@ -60,7 +55,7 @@
     총 <b>120,662</b>개의 맛있는 레시피가 있습니다.
     <ul class="nav nav-tabs2 pull-right" style="position:relative;">
       <li role="presentation" class="active"><a href="recipe_group.jsp;" onClick="goSearchRecipe('order','accuracy')">정확순</a></li>
-      <li role="presentation"><a href="recipe_group_lately.jsp;" onClick="goSearchRe                                                        cipe('order','date')">최신순</a></li>
+      <li role="presentation"><a href="recipe_group_lately.jsp;" onClick="goSearchRecipe('order','date')">최신순</a></li>
       <li role="presentation"><a href="recipe_group_push.jsp" onClick="goSearchRecipe('order','reco')">추천순</a></li>
     </ul>
     </div>
@@ -263,4 +258,3 @@
               </div>
     </div>
 <nav class="text-center"><ul class="pagination"><li class="active"><a href="/recipe/list.html?order=accuracy&page=1">1</a></li><li><a href="/recipe/list.html?order=accuracy&page=2">2</a></li><li><a href="/recipe/list.html?order=accuracy&page=3">3</a></li><li><a href="/recipe/list.html?order=accuracy&page=4">4</a></li><li><a href="/recipe/list.html?order=accuracy&page=5">5</a></li><li><a href="/recipe/list.html?order=accuracy&page=6">6</a></li><li><a href="/recipe/list.html?order=accuracy&page=7">7</a></li><li><a href="/recipe/list.html?order=accuracy&page=8">8</a></li><li><a href="/recipe/list.html?order=accuracy&page=9">9</a></li><li><a href="/recipe/list.html?order=accuracy&page=10">10</a></li><li><a href="/recipe/list.html?order=accuracy&page=11" aria-label="Next"><span aria-hidden="true">&gt;</span></a></li></ul></nav>  </div>
-</div>

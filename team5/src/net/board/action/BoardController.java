@@ -45,6 +45,14 @@ public class BoardController extends HttpServlet {
 			forward.setPath("./board/board_write.jsp");
 		} else if(command.equals("/BoardAddAction.bo")){
 			action = new RecipeAddAction();
+			//action = new Grasha();
+			try{
+				forward=action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		} else if(command.equals("/BoardRecipeList.bo")){
+			action = new BoardRecipeListAction();
 			try{
 				forward=action.execute(request, response);
 			}catch(Exception e){
