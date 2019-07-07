@@ -8,10 +8,9 @@ import javax.servlet.http.HttpSession;
 
 import net.board.db.BoardDAO;
 
-public class RecipeDeleteAction implements Action {
+public class EventDeleteAction implements Action{
 
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
 		ActionForward forward = new ActionForward();
 		request.setCharacterEncoding("euc-kr");
 
@@ -39,15 +38,13 @@ public class RecipeDeleteAction implements Action {
 
 		result=boarddao.boardDelete(num);
 		if(result==false){
-			System.out.println("레시피 게시판 삭제 실패");
+			System.out.println("토크 게시판 삭제 실패");
 			return null;
 		}
 
-		System.out.println("레시피 게시판 삭제 성공");
+		System.out.println("토크 게시판 삭제 성공");
 		forward.setRedirect(true);
 		forward.setPath("./BoardList.bo"); //토크 url로 수정해야함 
 		return forward;
 	}
-
-
 }

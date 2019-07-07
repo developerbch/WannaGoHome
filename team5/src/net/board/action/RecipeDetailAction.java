@@ -26,7 +26,7 @@ public class RecipeDetailAction implements Action {
 		}
 		System.out.println("레시피 상세보기 성공");
 
-		request.setAttribute("boarddata", masterdata);
+		request.setAttribute("masterdata", masterdata);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("./board/qna_board_view.jsp"); //url변경해야함!!-배창호
