@@ -14,6 +14,8 @@
 	else if(pagefile.equals("chef")) { pagefile="board_chef_content"; }
 	else if(pagefile.equals("event")) { pagefile="board_event_content"; }
 	else if(pagefile.equals("myhome")) { pagefile="board_myhome_content"; }
+	else if(pagefile.equals("talkwrite")) {pagefile="talk_cooktalk_write"; }
+	System.out.println("board_main_content.jsp : " + pagefile);
 %>
 <meta charset="EUC-KR">
 <title>TEAM5_만개의레시피</title>
@@ -33,7 +35,17 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 </div>
 <div style="width:100%">
+<%
+if(pagefile=="talk_cooktalk_write"){
+%>
+<jsp:include page='<%="./talk/"+pagefile+".jsp"%>'></jsp:include>
+<%	
+} else {
+%>
 <jsp:include page='<%="./board_content/"+pagefile+".jsp"%>'></jsp:include>
+<%
+}
+%>
 </div>
 <div style="width:100%">
 <jsp:include page="../include/footer.jsp"></jsp:include>
@@ -43,6 +55,7 @@
 <%--
 ** 경로가 맞음 *******************************************************************
 <jsp:include page="./board_content/board_home_content.jsp"></jsp:include>
+<jsp:include page="./talk/talk_cooktalk_write.jsp"></jsp:include>
 ******************************************************************************
 --%>
 

@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <div class="container">
-	
 	<dl class="home_cont">
 		<div class="row talk_title">
 			<div class="col-xs-7">
 				<h2>토크의 전체 글을 볼 수 있어요.</h2>
 			</div>
 			<div class="col-xs-5 text-right">
-				<a href="javascript:go_register();" class="btn btn-info">등록</a>
+				<a href="./BoardContent.bo?pagefile=talkwrite" class="btn btn-info">등록</a>
 			</div>
 		</div>
 	</dl>
