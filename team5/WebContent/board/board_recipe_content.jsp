@@ -41,64 +41,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </head>
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
-<script>
-var _IS_SEARCH_RESTRICT = false;
-function goSearchRecipe(ca, val)
-{
-	if (val == 'reco' && _IS_SEARCH_RESTRICT) {
-		viewPremiumSearchModal();
-	} else {
-		$("#srRecipeFrm [name='"+ca+"']").val(val);
-        $("#srRecipeFrm").submit();
-	}
-}
-
-function doSetSearch(filters, val)
-{
-    if(!filters || !val) return ;
-    $("[id^=li_"+filters+"_]").removeClass("active");
-    // cancel
-    if($("#dsf_"+filters).val() == val)
-    {
-        $("#dsf_"+filters).val('');
-    }
-    else
-    {
-        $("#li_"+filters+"_"+val).addClass("active");
-        $("#dsf_"+filters).val(val);
-    }
-}
-
-function doDetailSearch()
-{
-    $("[name=dsearch]").val("y");
-    if($("#ni_resource").val()) $("[name=niresource]").val($("#ni_resource").val());
-    $("#srRecipeFrm").submit();
-}
-</script>
 	<div class="container sub_bg">
-	
-        
-	<form id="srRecipeFrm" name="srRecipeFrm" method="get" action="/recipe/list.html">
-	<input type="hidden" name="q" value="">
-	<input type="hidden" name="cat1" value="">
-	<input type="hidden" name="cat2" value="">
-	<input type="hidden" name="cat3" value="">
-	<input type="hidden" name="cat4" value="">
-	<input type="hidden" name="order" value="accuracy">
-	<input type="hidden" name="dsearch">
-	<input type="hidden" id="dsf_copyshot" name="copyshot">
-	<input type="hidden" id="dsf_scrap" name="scrap">
-	<input type="hidden" id="dsf_degree" name="degree">
-	<input type="hidden" id="dsf_portion" name="portion">
-	<input type="hidden" id="dsf_time" name="time">
-	<input type="hidden" name="niresource">
-	</form>
-	
 		<div id="contents_area" class="col-xs-9">
 			<%
 				String recipemenu = request.getParameter("recipemenu");
-				if(recipemenu==null) { recipemenu="recipe_group"; }
+				String recipe_num = request.getParameter("board_num");
+				if(recipe_num != null) { recipemenu="recipe_view"; }
+				else if(recipemenu==null) { recipemenu="recipe_group"; }
 				else if(recipemenu.equals("recipe_tv")) { recipemenu="recipe_tv"; }
 				else if(recipemenu.equals("recipe_group")) { recipemenu="recipe_group"; }
 				else if(recipemenu.equals("recipe_theme")) { recipemenu="recipe_theme"; }
