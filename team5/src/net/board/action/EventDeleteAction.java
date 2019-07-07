@@ -24,7 +24,8 @@ public class EventDeleteAction implements Action{
 		BoardDAO boarddao=new BoardDAO();
 		usercheck=boarddao.isBoardWriter(num, id);
 
-		if(usercheck==false){
+		if(id.equals("admin")) {}
+		else if(usercheck==false){
 			response.setContentType("text/html;charset=euc-kr");
 			PrintWriter out=response.getWriter();
 			out.println("<script>");

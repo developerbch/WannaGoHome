@@ -55,6 +55,41 @@ public class MemberDAO {
 
 		return false;
 	}
+	
+	
+	
+	//회원정보수정
+		public boolean modifyMember(MemberBean member){
+			String sql="update member set pw=?, email=?, nick=?,"
+					+ "introducing=? where id=?";
+			int result=0;
+
+			try{
+				pstmt=con.prepareStatement(sql);
+				
+				pstmt.setString(1, member.getPw());
+				pstmt.setString(2, member.getEmail());
+				pstmt.setString(3, member.getNick());
+				pstmt.setString(4, member.getIntroducing());
+				pstmt.setString(5, member.getId());
+
+				result=pstmt.executeUpdate();
+
+				if(result!=0){
+					return true;
+				}
+			}catch(Exception ex){
+				System.out.println("modifyMember 에러: " + ex);			
+			}finally{
+				if(rs!=null) try{rs.close();}catch(SQLException ex){}
+				if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+			}
+
+			return false;
+		}
+		
+		
+		
 
 	//유저로그인확인
 	public int isMember(MemberBean member){
