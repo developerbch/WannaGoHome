@@ -1,5 +1,7 @@
 package net.board.db;
 
+import java.util.List;
+
 public class MasterBean {
 	
 	private BoardBean boardbean;
@@ -10,6 +12,7 @@ public class MasterBean {
 	private ReplyBean replybean;
 	private ScrapBean scrapbean;
 	private TalkBean talkbean;
+	private List cokOrderList;
 	
 	
 	public BoardBean getBoardbean() {
@@ -60,6 +63,11 @@ public class MasterBean {
 	public void setTalkbean(TalkBean talkbean) {
 		this.talkbean = talkbean;
 	}
-	 
+	public List getCokOrderList() {
+		return cokOrderList;
+	}
+	public void setCokOrderList(List cokOrderList) {
+		this.cokOrderList = cokOrderList;
+	}
 	
 }

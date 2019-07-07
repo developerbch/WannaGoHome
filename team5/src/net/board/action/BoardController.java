@@ -58,6 +58,13 @@ public class BoardController extends HttpServlet {
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+		} else if(command.equals("/RecipeDetailAction.bo")){
+			action = new RecipeDetailAction();
+			try{
+				forward=action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 		
 		if(forward.isRedirect()){
