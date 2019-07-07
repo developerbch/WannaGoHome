@@ -3,7 +3,7 @@
 <div class="container sub_bg">
 	<script type="text/javascript"
 		src="http://recipe1.ezmember.co.kr/static/js/swiper.min.js"
-		charset="utf-8"></script>
+		charset="EUC-KR"></script>
 	<link rel="stylesheet" type="text/css"
 		href="http://recipe1.ezmember.co.kr/static/css/swiper.min.css">
 	<style>

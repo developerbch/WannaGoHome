@@ -574,55 +574,75 @@ public class BoardDAO {
 
 
 	//글 내용 보기.(recipe 상세보기)
-	public MasterBean getRecipeDetail(int num) throws Exception{
+   public MasterBean getRecipeDetail(int num) throws Exception{
 
-		MasterBean master = null;
-		BoardBean board = null;
-		RecipeBean recipe = null;
+      MasterBean master = null;
+      BoardBean board = null;
+      RecipeBean recipe = null;
+      Cooking_orderBean cooking = null;
 
-		try{
-			pstmt = con.prepareStatement(
-					"select * from board bd left outer join recipe rc on bd.board_num = rc.board_num where BOARD_NUM = ? ");
-			pstmt.setInt(1, num);
+      try{
+         pstmt = con.prepareStatement(
+               "select * from board bd left outer join recipe rc on bd.board_num = rc.board_num where bd.BOARD_NUM = ? ");
+         pstmt.setInt(1, num);
+         rs= pstmt.executeQuery();
 
-			rs= pstmt.executeQuery();
+         if(rs.next()){
+            master = new MasterBean();
+            board = new BoardBean();
+            recipe = new RecipeBean();
+            cooking = new Cooking_orderBean();
+            
 
-			if(rs.next()){
-				master = new MasterBean();
-				board = new BoardBean();
-				recipe = new RecipeBean();
+            board.setBoard_num(rs.getInt("BOARD_NUM"));
+            board.setBoard_id(rs.getInt("BOARD_ID"));
+            board.setTitle(rs.getString("TITLE"));
+            board.setId(rs.getString("ID"));
+            board.setNick(rs.getString("NICK"));
+            board.setUpload_date(rs.getString("UPLOAD_DATE"));
+            board.setView_count(rs.getInt("VIEW_COUNT"));
+            recipe.setBoard_num(rs.getInt("BOARD_NUM"));
+            recipe.setCooking_serving(rs.getString("COOKING_SERVING"));
+            recipe.setCooking_time(rs.getString("COOKING_TIME")); 
+            recipe.setDifficulty(rs.getString("DIFFICULTY"));
+            recipe.setVideo_url(rs.getString("VIDEO_URL"));
+            recipe.setEssential_ingredient(rs.getString("ESSENTIAL_INGREDIENT"));
+            recipe.setSelective_ingredient(rs.getString("SELECTIVE_INGREDIENT"));
+            recipe.setTag(rs.getString("TAG"));
+            recipe.setThumbnail(rs.getString("THUMBNAIL"));
+            recipe.setCooking_comment(rs.getString("COOKING_COMMENT"));
 
-				board.setBoard_num(rs.getInt("BOARD_NUM"));
-				board.setBoard_id(rs.getInt("BOARD_ID"));
-				board.setTitle(rs.getString("TITLE"));
-				board.setId(rs.getString("ID"));
-				board.setNick(rs.getString("NICK"));
-				board.setUpload_date(rs.getString("UPLOAD_DATE"));
-				board.setView_count(rs.getInt("VIEW_COUNT"));
-				recipe.setBoard_num(rs.getInt("BOARD_NUM"));
-				recipe.setCooking_serving(rs.getString("COOKING_SERVING"));
-				recipe.setCooking_time(rs.getString("COOKING_TIME")); 
-				recipe.setDifficulty(rs.getString("DIFFICULTY"));
-				recipe.setVideo_url(rs.getString("VIDEO_URL"));
-				recipe.setEssential_ingredient(rs.getString("ESSENTIAL_INGREDIENT"));
-				recipe.setSelective_ingredient(rs.getString("SELECTIVE_INGREDIENT"));
-				recipe.setTag(rs.getString("TAG"));
-				recipe.setThumbnail(rs.getString("THUMBNAIL"));
-				recipe.setCooking_comment(rs.getString("COOKING_COMMENT"));
+            
+            master.setBoardbean(board);
+            master.setRecipebean(recipe);
 
-				master.setBoardbean(board);
-				master.setRecipebean(recipe);
-
-			}
-			return master;
-		}catch(Exception ex){
-			System.out.println("getRecipeDetail 에러 : " + ex);
-		}finally{
-			if(rs!=null)try{rs.close();}catch(SQLException ex){}
-			if(pstmt !=null)try{pstmt.close();}catch(SQLException ex){}
-		}
-		return null;
-	}
+         }
+         
+         pstmt = con.prepareStatement(
+                 "select * from "
+                 + "(select co.cooking_content, co.cooking_photo, co.step "
+                 + "from board bd left outer join cooking_order co "
+                 + "on bd.board_num = co.board_num "
+                 + "where bd.BOARD_NUM = ?) "
+                 + "order by step asc ");
+         pstmt.setInt(1, num);
+         rs = pstmt.executeQuery();
+         
+         while(rs.next()) {
+        	 cooking.setCooking_content(rs.getString("COOKING_CONTENT"));
+        	 cooking.setCooking_photo(rs.getString("COOKING_PHOTO"));
+        	 cooking.setStep(rs.getInt("STEP"));
+         }
+         
+         return master;
+      }catch(Exception ex){
+         System.out.println("getRecipeDetail 에러 : " + ex);
+      }finally{
+         if(rs!=null)try{rs.close();}catch(SQLException ex){}
+         if(pstmt !=null)try{pstmt.close();}catch(SQLException ex){}
+      }
+      return null;
+   }
 
 
 
