@@ -15,7 +15,7 @@ public class RecipeDetailAction implements Action {
 		BoardDAO boarddao=new BoardDAO();
 		MasterBean masterdata=new MasterBean();
 		
-		int num=Integer.parseInt(request.getParameter("num"));
+		int num=Integer.parseInt(request.getParameter("board_num"));
 		boarddao.setViewCountUpdate(num);
 		masterdata=boarddao.getRecipeDetail(num);
 		
@@ -27,13 +27,11 @@ public class RecipeDetailAction implements Action {
 		System.out.println("레시피 상세보기 성공");
 
 		request.setAttribute("masterdata", masterdata);
+		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("./board/qna_board_view.jsp"); //url변경해야함!!-배창호
+		forward.setPath("./board/board_recipe_content.jsp"); //url변경해야함!!-배창호
 		return forward;
-
-
-
 	}
 
 
