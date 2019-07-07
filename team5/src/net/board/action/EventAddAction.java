@@ -9,17 +9,17 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import net.board.db.BoardBean;
 import net.board.db.BoardDAO;
-import net.board.db.TalkBean;
+import net.board.db.EventBean;
 
-public class TalkAddAction implements Action{
+public class EventAddAction implements Action{
 
-	
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 		
 		
 		BoardDAO boarddao=new BoardDAO();
 		BoardBean boarddata=new BoardBean();
-		TalkBean talkdata=new TalkBean();
+		EventBean eventdata=new EventBean();
 		ActionForward forward=new ActionForward();
 		
 		HttpSession session=request.getSession();
@@ -59,23 +59,23 @@ public class TalkAddAction implements Action{
 			
 			
 			//TalkBean
-			talkdata.setTalk_category(Integer.parseInt(multi.getParameter("talk_category")));
-			talkdata.setLove(Integer.parseInt(multi.getParameter("love")));
-			talkdata.setTalk_content(multi.getParameter("talk_content"));
-			talkdata.setTalk_photo(multi.getParameter("talk_photo"));
+			eventdata.setStart_date(multi.getParameter("talk_category"));
+			eventdata.setEnd_date(multi.getParameter("love"));
+			eventdata.setEvent_content(multi.getParameter("talk_content"));
+			eventdata.setEvent_photo(multi.getParameter("talk_photo"));
 			
 
 
 			result=boarddao.boardInsert(boarddata);
-			result2=boarddao.boardInsertTalk(talkdata);
+			result2=boarddao.boardInsertEvent(eventdata);
 
 			
 			
 			if(result==0 || result2==false){
-				System.out.println("게시판 등록 실패");
+				System.out.println("이벤트 게시판 등록 실패");
 				return null;
 			}
-			System.out.println("게시판 등록 완료");
+			System.out.println("이벤트 게시판 등록 완료");
 
 			forward.setRedirect(true);
 			forward.setPath("./BoardList.bo"); //토크 url로 보내야함 수정 요망!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -88,6 +88,4 @@ public class TalkAddAction implements Action{
 		
 		return null;
 	}
-
-	
 }

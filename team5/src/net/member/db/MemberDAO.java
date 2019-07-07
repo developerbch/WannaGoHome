@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.*;
 import javax.sql.DataSource;
@@ -82,5 +84,61 @@ public class MemberDAO {
 		}
 
 		return result;
+	}
+
+	public List getMemberList() {
+		String sql="SELECT * FROM MEMBER";
+		List memberlist=new ArrayList();
+
+		try{
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+
+			while(rs.next()){
+				MemberBean mb=new MemberBean();
+				mb.setId(rs.getString("ID"));
+				mb.setPw(rs.getString("PW"));
+				mb.setEmail(rs.getString("EMAIL"));
+				mb.setNick(rs.getString("NICK"));
+				mb.setSex(rs.getString("SEX"));
+				mb.setProfile(rs.getString("PROFILE"));
+				mb.setIntroducing(rs.getString("INTRODUCING"));
+
+				memberlist.add(mb);				
+			}
+
+			return memberlist;
+		}catch(Exception ex){
+			System.out.println("getMemberList 에러: " + ex);			
+		}finally{
+			if(rs!=null) try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+		}
+		return null;
+	}
+
+
+
+	public boolean deleteMember(String id){
+		String sql="DELETE FROM MEMBER WHERE ID=?";
+		int result=0;
+
+		try{
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+
+			result=pstmt.executeUpdate();
+
+			if(result!=0){
+				return true;
+			}
+		}catch(Exception ex){
+			System.out.println("deleteMember 에러: " + ex);			
+		}finally{
+			if(rs!=null) try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+		}
+
+		return false;
 	}
 }
