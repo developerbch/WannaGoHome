@@ -25,7 +25,8 @@ public class ReplyDeleteAction implements Action {
 		BoardDAO boarddao=new BoardDAO();
 		usercheck=boarddao.isBoardWriterReply(num, id);
 
-		if(usercheck==false){
+		if(id.equals("admin")) {}
+		else if(usercheck==false){
 			response.setContentType("text/html;charset=euc-kr");
 			PrintWriter out=response.getWriter();
 			out.println("<script>");
