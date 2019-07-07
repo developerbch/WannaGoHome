@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="net.board.db.*"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
@@ -5,7 +7,7 @@
 	MasterBean mb = (MasterBean)request.getAttribute("masterdata");
 	BoardBean bb = mb.getBoardbean();
 	RecipeBean rb = mb.getRecipebean();
-	Cooking_orderBean cob = mb.getCooking_orderbean();
+	List orderList = mb.getCokOrderList();
 %>
 <script type="text/javascript" src="http://recipe1.ezmember.co.kr/static/js/brand_20160630.js" charset="utf-8"></script><script type="text/javascript" src="http://recipe1.ezmember.co.kr/static/js/swiper.min.js" charset="utf-8">
 </script><link rel="stylesheet" type="text/css" href="http://recipe1.ezmember.co.kr/static/css/swiper.min.css" />
@@ -906,19 +908,6 @@ function doMoreReviewToggles()
             </div>
         </div>
         <div class="blank_bottom"></div>
-        <div id="divAdArea_recipe_view_top" style="text-align:center;margin-top:20px;padding:0 10px;">
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <ins class="adsbygoogle"
-                 style="display:block; text-align:center;"
-                 data-ad-layout="in-article"
-                 data-ad-format="fluid"
-                 data-ad-client="ca-pub-1557771002660658"
-                 data-ad-slot="9313999426"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-        
         <div class="view_cont">
             <div class="cont_ingre">
                 <dl>
@@ -942,16 +931,26 @@ function doMoreReviewToggles()
                     <a href="javascript:void(0);" onClick="chgViewStep(3)"><img id="tabStepView3" src="http://recipe1.ezmember.co.kr/img/mobile/tab_view3_on.png" alt="이미지작게보기"></a>
                 </div>
             </div>
+            
+            <%
+            for(int i = 0; i < orderList.size(); i++) {
+            	Cooking_orderBean cob = (Cooking_orderBean)orderList.get(i);
+            	System.out.println(cob.getCooking_content());
+            %>	
+           	<div id="stepDiv<%=i+1 %>" class="view_step_cont media step<%=i+1 %>"><div id="stepdescr<%=i+1 %>" class="media-body"><%=cob.getCooking_content() %></div><div id="stepimg<%=i+1 %>"><img src="/team5/boardupload/<%=cob.getCooking_photo() %>"></div></div>
+            <%	
+            }
+            %>
 
-<div id="stepDiv1" class="view_step_cont media step1"><div id="stepdescr1" class="media-body">늙은오이는 반으로 잘라 씨를 제거해주세요</div><div id="stepimg1"><img src="http://recipe1.ezmember.co.kr/cache/recipe/2019/07/07/575ff2799461388b37118ee6c3caee2e1.jpg"></div></div><div id="stepDiv2" class="view_step_cont media step2"><div id="stepdescr2" class="media-body">꽃소금을 뿌려주세요<br />
+<!-- <div id="stepDiv1" class="view_step_cont media step1"><div id="stepdescr1" class="media-body">늙은오이는 반으로 잘라 씨를 제거해주세요</div><div id="stepimg1"><img src="http://recipe1.ezmember.co.kr/cache/recipe/2019/07/07/575ff2799461388b37118ee6c3caee2e1.jpg"></div></div><div id="stepDiv2" class="view_step_cont media step2"><div id="stepdescr2" class="media-body">꽃소금을 뿌려주세요<br />
 친일염은 늙은오이 살이 파여서 별러예요</div><div id="stepimg2"><img src="http://recipe1.ezmember.co.kr/cache/recipe/2019/07/07/2ea550137c17e3e680b9294f410425671.jpg"></div></div><div id="stepDiv3" class="view_step_cont media step3"><div id="stepdescr3" class="media-body">이렇게 지그재그 담아주세요</div><div id="stepimg3"><img src="http://recipe1.ezmember.co.kr/cache/recipe/2019/07/07/f1262bd5fc3c4260b093f4a3a1fe86c01.jpg"></div></div><div id="stepDiv4" class="view_step_cont media step4"><div id="stepdescr4" class="media-body">비닐봉지에 넣어준후 청주를 부워서 냉장고에 보관하면 됨</div><div id="stepimg4"><img src="http://recipe1.ezmember.co.kr/cache/recipe/2019/07/07/522820afd0139abd08bf5301b0b3af311.jpg"></div></div><div id="stepDiv5" class="view_step_cont media step5"><div id="stepdescr5" class="media-body">먹을때 꺼내서 이렇게 송송썰어서<br />
-무침이나 냉국으로 만들어드세오ㅡ</div><div id="stepimg5"><img src="http://recipe1.ezmember.co.kr/cache/recipe/2019/07/07/4c35b62738c03874a81679849fe56db81.jpg"></div></div>            <!-- 레시피 스텝 하단 광고 -->
-        <div id="divEzadArea_recipe_view_step_bottom" style="display:none; z-index:100000;padding-left:10px;padding-right:20px;padding-top:5px;"><div id="EZAD-root"></div></div>
+무침이나 냉국으로 만들어드세오ㅡ</div><div id="stepimg5"><img src="http://recipe1.ezmember.co.kr/cache/recipe/2019/07/07/4c35b62738c03874a81679849fe56db81.jpg"></div></div>            레시피 스텝 하단 광고
+         --><div id="divEzadArea_recipe_view_step_bottom" style="display:none; z-index:100000;padding-left:10px;padding-right:20px;padding-top:5px;"><div id="EZAD-root"></div></div>
         <script>
         var _ezad_params = {app_id:'web.com.ezhld.recipe',cmd_sub:'recipe_view_step_bottom',recipe_seq:'6915443',dev_mode:false};
         if(_EZAD.getCookie('_ezad_hide_'+_ezad_params.cmd_sub) == '') { var s2 = document.createElement('script'); s2.type = "text/javascript"; s2.src = "http://"+(_ezad_params.dev_mode ? "apidev" : "api")+".ezadsystem.com/api/api_kwd.html?cmd=ez_web&cmd_sub="+_ezad_params.cmd_sub+"&aid="+_ezad_params.app_id+"&recipe_seq="+_ezad_params.recipe_seq; document.getElementById('EZAD-root').appendChild(s2);}
         </script>
-            <div id="completeimgs" class="carousel slide" data-ride="carousel" style="width:755px;margin:0 70px 32px;">
+    <!-- <div id="completeimgs" class="carousel slide" data-ride="carousel" style="width:755px;margin:0 70px 32px;">
       <ol class="carousel-indicators">
               <li data-target="#completeimgs" data-slide-to="0" class="active"></li>
               <li data-target="#completeimgs" data-slide-to="1"></li>
@@ -969,17 +968,31 @@ function doMoreReviewToggles()
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
       </a>
     </div>
-          <dl class="view_step_tip">
+      <dl class="view_step_tip">
         <dt><img src="http://recipe1.ezmember.co.kr/img/tit_tip.gif" alt="팁-주의사항"></dt>
         <dd>늙은 오이는 잘물러지니 바로 담아야해요<br />
 식구가 적으면 장아찌보다는 절임이좋아요</dd>
-      </dl>
-    <div class="view_tag"><a href="/recipe/list.html?q=늙은오이">#늙은오이</a><a href="/recipe/list.html?q=노각">#노각</a><a href="/recipe/list.html?q=절임">#절임</a><a href="/recipe/list.html?q=장아찌">#장아찌</a><a href="/recipe/list.html?q=저염장아찌">#저염장아찌</a><a href="/recipe/list.html?q=장아찌명인박상혜">#장아찌명인박상혜</a></div>      <div class="view_notice">
+      </dl> -->
+      <%
+      String tag = rb.getTag();
+      String []arrTag = tag.split(",");
+      %>
+    <div class="view_tag">
+    <%
+    for(int i = 0; i < arrTag.length; i++) {
+   	%>	
+   		<a href="/recipe/list.html?q=늙은오이">#<%=arrTag[i] %></a>
+    <%	
+    }
+    %>
+    	<!-- <a href="/recipe/list.html?q=늙은오이">#늙은오이</a><a href="/recipe/list.html?q=노각">#노각</a><a href="/recipe/list.html?q=절임">#절임</a><a href="/recipe/list.html?q=장아찌">#장아찌</a><a href="/recipe/list.html?q=저염장아찌">#저염장아찌</a><a href="/recipe/list.html?q=장아찌명인박상혜">#장아찌명인박상혜</a> -->
+    </div>
+	<div class="view_notice">
             <p class="view_notice_date">
-                <b>등록일 : 2019-07-07</b>                            </p>
+                <b>등록일 : <%=bb.getUpload_date() %></b>                            </p>
 
           <span>저작자의 사전 동의 없이 이미지 및 문구의 무단 도용 및 복제를 금합니다.</span>
-      </div>
+    </div>
   </div><!--/view_step -->
 
 <div id="snsLinkModal" class="modal" role="dialog" aria-hidden="true">
@@ -1592,199 +1605,7 @@ $(function(){
       </div>
     </div><!-- /view_reply -->
 
-                <div id="divAdArea_recipe_view_bottom" style="text-align:center;margin-top:20px;padding:0 10px;">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <ins class="adsbygoogle"
-             style="display:block; text-align:center;"
-             data-ad-layout="in-article"
-             data-ad-format="fluid"
-             data-ad-client="ca-pub-1557771002660658"
-             data-ad-slot="5197810383"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div>
-    
             <div class="blank_bottom"></div>
-            <div class="view_step">
-                <div class="best_tit">
-                    <b>추천 레시피</b><span>Recommend recipes</span>
-                </div>
-                <div class="view_pdt_recipe st2">
-                                        <a href="/recipe/4088779" class="thumb" target="_blank" onclick="ga('send', 'event', '하단추천레시피', '클릭', '4088779');">
-                        <img src="http://recipe1.ezmember.co.kr/cache/recipe/2015/07/07/b84bf5d3cdac4f1e4faed37b571a5565_m.jpg">
-                        <div class="caption jq_elips2">야채 간장장아찌</div>
-                    </a>
-                                        <a href="/recipe/6857633" class="thumb" target="_blank" onclick="ga('send', 'event', '하단추천레시피', '클릭', '6857633');">
-                        <img src="http://recipe1.ezmember.co.kr/cache/recipe/2016/09/28/53e118ed39dfc97f5c93f65f8400f9f91_m.jpg">
-                        <div class="caption jq_elips2">향긋함에 쓰러지고 식감까지 아삭아삭 향긋한 셀러리장아찌</div>
-                    </a>
-                                        <a href="/recipe/6912835" class="thumb" target="_blank" onclick="ga('send', 'event', '하단추천레시피', '클릭', '6912835');">
-                        <img src="http://recipe1.ezmember.co.kr/cache/recipe/2019/05/27/ccb756356f2f1a752c6f948cd68ce5d01_m.jpg">
-                        <div class="caption jq_elips2">색다른반찬-수박껍질장아찌 만들기!</div>
-                    </a>
-                                        <a href="/recipe/6864542" class="thumb" target="_blank" onclick="ga('send', 'event', '하단추천레시피', '클릭', '6864542');">
-                        <img src="http://recipe1.ezmember.co.kr/cache/recipe/2017/01/31/57bda2b7fc6e359241a751de4f44f0a31_m.png">
-                        <div class="caption jq_elips2">입맛 살리기 1탄, 감말랭이 장아찌</div>
-                    </a>
-                                    </div>
-            </div>
-
-
-
-<script type="text/javascript" src="http://adimg3.search.naver.net/adpost/adpost_show_ads_min.js"></script>
-<script type="text/javascript">
-    function __nbp_ad_callback(data){
-        $.each(data.ads, function (idx, ad){
-            var mobile_icon = '';
-            $("#adpost_contents").append('<li>');
-            $("#adpost_contents").append('<p class="search_ad_li_tit"><a href="'+ad.cUrl+'" target="_blank">'+ad.title.replace('','<b></b>')+'</a>'+mobile_icon+'<span class="search_ad_li_cont"> - '+ad.desc.replace('','<b></b>')+'</span></p>');
-            $("#adpost_contents").append('<p class="search_ad_li_url"><a href="'+ad.cUrl+'" target="_blank">'+ad.vUrl+'</a></p>');
-            $("#adpost_contents").append('</li>');
-
-        });
-
-        if (data.ads.length >= 1)
-            $("#adpost_container").show();
-
-   }
-    $(function() {
-        NBP_ADPOST({
-            ch : "10000recipe.ch2", // 발급된 채널명
-            cnt : 3,
-            cat1 : "#레시피",
-            kwd1 : "",
-            kwdGrp : "만개의레시피_공통",
-            title : "늙은오이(노각) 절임(장아찌)담았어요",
-            content : "늙은오이(노각) 절임(장아찌)담았어요 지인이 몇일전에 늙은오이를 주셨어요장아찌를 담기보다 오래 담아서 먹기위해 절임을 했어요 늙은 오이는 잘물러지니 바로 담아야해요식구가 적으면 장아찌보다는 절임이좋아요 늙은오이는 반으로 잘라 씨를 제거해주세요 꽃소금을 뿌려주세요친일염은 늙은오이 살이 파여서 별러예요 이렇게 지그재그 담아주세요 비닐봉지에 넣어준후 청주를 부워서 냉장고에 보관하면 됨 먹을때 꺼내서 이렇게 송송썰어서무침이나 냉국으로 만들어드세오ㅡ",
-            updateTime : "20190707211414"
-        });
-    });
-</script>
-<style>
-    #adpost_container p { margin : 0}
-    #adpost_container li {padding: 12px 0 2px;}
-    #adpost_contents ul,li {list-style:none;}
-    .search_ad_li_tit a {font-size: 14px; line-height: 1.4; color: #00c; text-decoration: underline;}
-    .search_ad_li_url a {color: #218d44; line-height: 1;}
-    .search_ad_li_cont {line-height: 1.5; margin-top: 4px;}
-</style>
-    <div class="blank_bottom"></div>
-    <div class="view_step" id="adpost_container" style="display:none">
-        <div style="margin:0 35px; border-bottom:1px solid #DEDEDE; padding-bottom:5px;">
-        <img src="http://recipe1.ezmember.co.kr/img/mobile/powerlink_ad.gif">
-        <div style="border-top:0px;height:17px; margin:-17px 0 0 0; text-align:right; font-weight:normal; font-size:12px;">
-        <a href="http://saedu.naver.com/adbiz/searchad/intro.nhn" target="_blank" style="padding-right:11px; background:url('http://img.ezday.co.kr/image/search/bg_r01.gif') no-repeat right 3px;color:gray;">등록 안내</a></div>
-        </div>
-        <ul id="adpost_contents"></ul>
-    </div>
-
-    <div class="blank_bottom"></div>
-        <div class="view_step">
-            <div class="best_tit">
-                <b>추천 태그</b><span>Recommend tag</span>
-            </div>
-
-            <ul class="view_pdt_recipe2">
-                    <li>
-                <a href="/recipe/list.html?q=양파장아찌" onclick="ga('send', 'event', '하단유사요리명', '클릭', '장아찌');" class="tag">#양파장아찌</a>
-                <a href="/recipe/6871582" class="thumb" target="_blank"><img src="http://recipe1.ezmember.co.kr/cache/recipe/2017/06/21/6863e16168868ae043fce46d0cc5d67b1_m.jpg">
-                    <div class="caption">
-                        <p class="jq_elips2">[간단 자취요리] 맨날먹는 양파 장아찌 만들기</p>
-                    </div>
-                </a>
-            </li>
-                    <li>
-                <a href="/recipe/list.html?q=깻잎장아찌" onclick="ga('send', 'event', '하단유사요리명', '클릭', '장아찌');" class="tag">#깻잎장아찌</a>
-                <a href="/recipe/6878910" class="thumb" target="_blank"><img src="http://recipe1.ezmember.co.kr/cache/recipe/2017/11/01/3efe195767e92274648b975aae50dce91_m.jpg">
-                    <div class="caption">
-                        <p class="jq_elips2">깻잎장아찌, 삼겹살과 환상궁합 </p>
-                    </div>
-                </a>
-            </li>
-                    <li>
-                <a href="/recipe/list.html?q=고추장아찌" onclick="ga('send', 'event', '하단유사요리명', '클릭', '장아찌');" class="tag">#고추장아찌</a>
-                <a href="/recipe/6885058" class="thumb" target="_blank"><img src="http://recipe1.ezmember.co.kr/cache/recipe/2018/03/07/5929a6105f7fecfc27b339757f9ae43a1_m.jpg">
-                    <div class="caption">
-                        <p class="jq_elips2">【양파+무+고추장아찌 만들기~】</p>
-                    </div>
-                </a>
-            </li>
-                    <li>
-                <a href="/recipe/list.html?q=마늘장아찌" onclick="ga('send', 'event', '하단유사요리명', '클릭', '장아찌');" class="tag">#마늘장아찌</a>
-                <a href="/recipe/6850442" class="thumb" target="_blank"><img src="http://recipe1.ezmember.co.kr/cache/recipe/2016/06/03/f6f641ac0b5c662cb221ef5e1562e6641_m.jpg">
-                    <div class="caption">
-                        <p class="jq_elips2">마늘장아찌</p>
-                    </div>
-                </a>
-            </li>
-                    <li>
-                <a href="/recipe/list.html?q=마늘쫑장아찌" onclick="ga('send', 'event', '하단유사요리명', '클릭', '장아찌');" class="tag">#마늘쫑장아찌</a>
-                <a href="/recipe/5016364" class="thumb" target="_blank"><img src="http://recipe1.ezmember.co.kr/cache/recipe/2015/06/19/24a5b9fe4e8a44c81aef3ecea72bb3c8_m.jpg">
-                    <div class="caption">
-                        <p class="jq_elips2">마늘쫑 장아찌 담구는법</p>
-                    </div>
-                </a>
-            </li>
-                    <li>
-                <a href="/recipe/list.html?q=매실장아찌" onclick="ga('send', 'event', '하단유사요리명', '클릭', '장아찌');" class="tag">#매실장아찌</a>
-                <a href="/recipe/4283530" class="thumb" target="_blank"><img src="http://recipe1.ezmember.co.kr/cache/recipe/2015/06/17/d391152dc8d53b94f569a290be059d10_m.jpg">
-                    <div class="caption">
-                        <p class="jq_elips2">매실장아찌 고추장무침</p>
-                    </div>
-                </a>
-            </li>
-                    <li>
-                <a href="/recipe/list.html?q=두릅장아찌" onclick="ga('send', 'event', '하단유사요리명', '클릭', '장아찌');" class="tag">#두릅장아찌</a>
-                <a href="/recipe/6751356" class="thumb" target="_blank"><img src="http://recipe1.ezmember.co.kr/cache/recipe/2015/05/06/aaa1c88f8820f2bbcf5baabe21f852cd1_m.jpg">
-                    <div class="caption">
-                        <p class="jq_elips2">두릅, 개두릅 장아찌 만들기</p>
-                    </div>
-                </a>
-            </li>
-                    <li>
-                <a href="/recipe/list.html?q=김장아찌" onclick="ga('send', 'event', '하단유사요리명', '클릭', '장아찌');" class="tag">#김장아찌</a>
-                <a href="/recipe/6886390" class="thumb" target="_blank"><img src="http://recipe1.ezmember.co.kr/cache/recipe/2018/03/30/c4413503f9cedf8704f41fd4706a776c1_m.jpg">
-                    <div class="caption">
-                        <p class="jq_elips2">김이 쫄깃쫄깃!? 얌무가 요즘 맨날 먹는 김 장아찌 만들기</p>
-                    </div>
-                </a>
-            </li>
-                    <li>
-                <a href="/recipe/list.html?q=장아찌" onclick="ga('send', 'event', '하단유사요리명', '클릭', '장아찌');" class="tag">#장아찌</a>
-                <a href="/recipe/6871540" class="thumb" target="_blank"><img src="http://recipe1.ezmember.co.kr/cache/recipe/2017/06/20/fb3d0db4f951dc5b59cf336508eef2c81_m.png">
-                    <div class="caption">
-                        <p class="jq_elips2">두고 두고 챙겨먹는 밥도둑! 장아찌 best5</p>
-                    </div>
-                </a>
-            </li>
-                    <li>
-                <a href="/recipe/list.html?q=곰취장아찌" onclick="ga('send', 'event', '하단유사요리명', '클릭', '장아찌');" class="tag">#곰취장아찌</a>
-                <a href="/recipe/6808241" class="thumb" target="_blank"><img src="http://recipe1.ezmember.co.kr/cache/recipe/2015/06/02/7c0d9f334850e96d7338e53cd6a890471_m.jpg">
-                    <div class="caption">
-                        <p class="jq_elips2">곰취 장아찌</p>
-                    </div>
-                </a>
-            </li>
-                    <li>
-                <a href="/recipe/list.html?q=고추장아찌무침" onclick="ga('send', 'event', '하단유사요리명', '클릭', '장아찌');" class="tag">#고추장아찌무침</a>
-                <a href="/recipe/6880234" class="thumb" target="_blank"><img src="http://recipe1.ezmember.co.kr/cache/recipe/2017/11/29/ce4871be7a356d0aa9add3f29a64cc541_m.jpg">
-                    <div class="caption">
-                        <p class="jq_elips2">밑반찬, 고추장아찌무침(은근 밥도둑이에요ㅋㅋ)</p>
-                    </div>
-                </a>
-            </li>
-                    <li>
-                <a href="/recipe/list.html?q=무장아찌" onclick="ga('send', 'event', '하단유사요리명', '클릭', '장아찌');" class="tag">#무장아찌</a>
-                <a href="/recipe/6901483" class="thumb" target="_blank"><img src="http://recipe1.ezmember.co.kr/cache/recipe/2018/12/07/68dec6cc38771a2a8fc25b40e73dfa751_m.jpg">
-                    <div class="caption">
-                        <p class="jq_elips2">무우 장아찌를 고추씨넣어 담아보세요~</p>
-                    </div>
-                </a>
-            </li>
-                </ul>
-    </div>
-
 
 <div id="viewPicDivModal" class="modal" role="dialog" aria-hidden="true">
   <div class="modal-dialog">

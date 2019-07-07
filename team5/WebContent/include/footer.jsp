@@ -46,12 +46,6 @@ $(document).ready(function () {
     getViewRecipeList(1);
 })
 </script>
-<div id="recentRecipeDiv" class="container">
-  <div class="rcp_lately_list">
-    <h3>최근 본 레시피</h3>
-    <div id="recentRecipeContDiv"></div>
-  </div>
-</div>
 <script type="text/javascript">
 <!--
 $(document).ready(function() {
