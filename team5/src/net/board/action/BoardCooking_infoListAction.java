@@ -5,14 +5,11 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import net.board.db.BoardDAO;
 
-public class BoardListAction implements Action {
-
+public class BoardCooking_infoListAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//TODO: 각 게시판 별 리스트 한 액션으로 받아올 수 있으면 한 액션으로 통합하기
 		BoardDAO boarddao=new BoardDAO();
 		List boardlist=new ArrayList();
 		
@@ -24,7 +21,7 @@ public class BoardListAction implements Action {
 		}
 		
 		int listcount=boarddao.getListCount(); //총 리스트 수를 받아옴.
-		boardlist = boarddao.getBoardList(page,limit); //리스트를 받아옴.
+		boardlist = boarddao.getBoardCooking_infoList(page,limit); //리스트를 받아옴.
 		
 		//총 페이지 수.
    		int maxpage=(int)((double)listcount/limit+0.95); //0.95를 더해서 올림 처리.
@@ -44,7 +41,7 @@ public class BoardListAction implements Action {
 		
 		ActionForward forward= new ActionForward();
 	   	forward.setRedirect(false);
-   		forward.setPath("./board/");//url수정
+   		forward.setPath("./board/board_recipe_content.jsp");
 		return forward;
 	}
 

@@ -8,11 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.board.db.BoardDAO;
 
-public class BoardRecipeListAction implements Action {
+public class BoardTalkListAction implements Action{
 
-	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO 보드리스트액션으로 통합 가능하면 통합하기
 		BoardDAO boarddao=new BoardDAO();
 		List boardlist=new ArrayList();
 		
@@ -24,7 +22,7 @@ public class BoardRecipeListAction implements Action {
 		}
 		
 		int listcount=boarddao.getListCount(); //총 리스트 수를 받아옴.
-		boardlist = boarddao.getBoardRecipeList(page,limit); //리스트를 받아옴.
+		boardlist = boarddao.getBoardTalkList(page,limit); //리스트를 받아옴.
 		
 		//총 페이지 수.
    		int maxpage=(int)((double)listcount/limit+0.95); //0.95를 더해서 올림 처리.
