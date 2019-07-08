@@ -6,8 +6,8 @@
 <head>
 <%
 	String pagefile = request.getParameter("pagefile");
-	if(pagefile==null) { pagefile="ab_recipe_content"; }
-	else if(pagefile.equals("recipe")) { pagefile="ab_recipe_content"; }
+	if(pagefile==null) { pagefile="ab_management_content"; }
+	else if(pagefile.equals("recipe")) { pagefile="board_recipe_content"; }
 	else if(pagefile.equals("cookinfo")) { pagefile="ab_cookinfo_content"; }
 	else if(pagefile.equals("event")) { pagefile="ab_event_content"; }
 	else if(pagefile.equals("management")) { pagefile="ab_management_content"; }
@@ -32,7 +32,13 @@
 <jsp:include page="../include/admin_header.jsp"></jsp:include>
 </div>
 <div style="width:100%">
+<%
+if(pagefile.equals("board_recipe_content")) {
+%>
+<jsp:include page='<%="./board_recipe_content.jsp"%>'></jsp:include>
+<%} else {%>
 <jsp:include page='<%="./board_content/"+pagefile+".jsp"%>'></jsp:include>
+<%} %>
 </div>
 <div style="width:100%">
 <jsp:include page="../include/footer.jsp"></jsp:include>

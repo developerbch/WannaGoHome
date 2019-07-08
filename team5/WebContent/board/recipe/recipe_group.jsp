@@ -142,4 +142,35 @@ function doDetailSearch()
               </div>
 	<%} %>
     </div>
-<nav class="text-center"><ul class="pagination"><li class="active"><a href="/recipe/list.html?order=accuracy&page=1">1</a></li><li><a href="/recipe/list.html?order=accuracy&page=2">2</a></li><li><a href="/recipe/list.html?order=accuracy&page=3">3</a></li><li><a href="/recipe/list.html?order=accuracy&page=4">4</a></li><li><a href="/recipe/list.html?order=accuracy&page=5">5</a></li><li><a href="/recipe/list.html?order=accuracy&page=6">6</a></li><li><a href="/recipe/list.html?order=accuracy&page=7">7</a></li><li><a href="/recipe/list.html?order=accuracy&page=8">8</a></li><li><a href="/recipe/list.html?order=accuracy&page=9">9</a></li><li><a href="/recipe/list.html?order=accuracy&page=10">10</a></li><li><a href="/recipe/list.html?order=accuracy&page=11" aria-label="Next"><span aria-hidden="true">&gt;</span></a></li></ul></nav>  </div>
+    <nav class="text-center">
+      <ul class="pagination">
+         <%
+            for(int a=startpage;a<=endpage;a++)
+            {
+               if(a==nowpage)
+               {
+         %>
+               <li class="active">
+               <a href="./BoardRecipeList.bo?order=accuracy&page=<%=a%>"><%=a%></a><li>
+         <%
+               } else {
+         %>
+                     <a href="./BoardRecipeList.bo?order=accuracy&page=<%=a%>">a</a>
+         <% 
+               }
+            }
+         %>
+         
+         <% 
+            if(nowpage>=maxpage) 
+            {
+         %>
+            <li><a href="/recipe/list.html?order=accuracy&page=<%=nowpage+1%>"
+            aria-label="Next"><span aria-hidden="true">&gt;</span></a></li>
+         <%
+            }
+         %>
+   </nav>
+   </div>
+<!-- <nav class="text-center"><ul class="pagination"><li class="active"><a href="/recipe/list.html?order=accuracy&page=1">1</a></li><li><a href="/recipe/list.html?order=accuracy&page=2">2</a></li><li><a href="/recipe/list.html?order=accuracy&page=3">3</a></li><li><a href="/recipe/list.html?order=accuracy&page=4">4</a></li><li><a href="/recipe/list.html?order=accuracy&page=5">5</a></li><li><a href="/recipe/list.html?order=accuracy&page=6">6</a></li><li><a href="/recipe/list.html?order=accuracy&page=7">7</a></li><li><a href="/recipe/list.html?order=accuracy&page=8">8</a></li><li><a href="/recipe/list.html?order=accuracy&page=9">9</a></li><li><a href="/recipe/list.html?order=accuracy&page=10">10</a></li><li><a href="/recipe/list.html?order=accuracy&page=11" aria-label="Next"><span aria-hidden="true">&gt;</span></a></li></ul></nav>  </div>
+ -->

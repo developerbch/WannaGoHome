@@ -28,6 +28,10 @@
     <servlet-name>MemberController</servlet-name>
     <url-pattern>*.me</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MemberController</servlet-name>
+    <url-pattern>*.adm</url-pattern>
+  </servlet-mapping>
   
   <resource-ref>
     <description>Connection</description>

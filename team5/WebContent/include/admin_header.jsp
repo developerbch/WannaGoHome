@@ -63,14 +63,7 @@ function doRTKeyword()
 				 관리자페이지</h1>
 			
 			<ul class="gnb_right">
-				<%
-					if(id == null) {
-				%>
-				<li><a href="./MemberLogin.me"><img
-						src="http://recipe1.ezmember.co.kr/img/ico_user.png" alt="로그인"></a></li>
-				<%
-					} else if(!id.equals("admin")) {
-				%>
+				
 				<li>
                         <a id="memLayerBtn" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="마이페이지" data-original-title="마이페이지">
                         	<img src="http://recipe1.ezmember.co.kr/img/df/pm_100_100.png">
@@ -78,23 +71,14 @@ function doRTKeyword()
                         <div class="mem_layer document_common_layer" style="display:none;left:-40px;">
                             <p class="mem_layer_t"></p>
                             <p class="mem_layer_m" style="text-align:left;">
-                                <a href="/profile/index.html">MY홈</a>
-                                <a href="/profile/scrap.html">스크랩한 레시피</a>
-                                <a href="/profile/note.html">레시피 노트</a>
-                                <a href="/profile/alim.html">알림</a>
-                                <a href="/profile/message.html">메시지</a>
-                                <a href="/profile/qna.html">문의내역</a>
-								<a href="/profile/order.html">주문조회</a>
-								<a href="/shop/cart.html">장바구니</a>
-                                <a href="/user/check_login.html">회원정보수정</a>
+                                <a href="javascript:void(0)">회원관리</a>
+                                <a href="javascript:void(0)">게시글관리</a>
+                                <a href="javascript:void(0)">이벤트관리</a>
                                 <a href="./MemberLogout.me">로그아웃</a>
 							</p>
                             <p class="mem_layer_b"></p>
                         </div>
                     </li>
-				<%
-					}
-				%>
 				<li>
 					<a id="btnTopWrite" href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="레시피등록" data-original-title="레시피등록">
 						<img src="http://recipe1.ezmember.co.kr/img/tmn_write.png">
@@ -120,10 +104,10 @@ function doRTKeyword()
 
    <div class="gnb_nav">
       <ul class="gnb_nav_ea10">
-         <li><a href="./board_admin_content.jsp?pagefile=recipe" id="homepage">레시피</a></li>
-         <li><a href="./board_admin_content.jsp?pagefile=cookinfo" id="recipepage">요리정보</a></li>
-         <li><a href="./board_admin_content.jsp?pagefile=event" id="talkpage">이벤트</a></li>
-         <li><a href="./board_admin_content.jsp?pagefile=management" id="cookinfopage">회원관리</a></li>
+         <li><a href="./AdminContent.adm?pagefile=recipe" id="homepage">레시피</a></li>
+         <li><a href="./AdminContent.adm?pagefile=cookinfo" id="recipepage">요리정보</a></li>
+         <li><a href="./AdminContent.adm?pagefile=event" id="talkpage">이벤트</a></li>
+         <li><a href="./AdminManage.adm?pagefile=management" id="cookinfopage">회원관리</a></li>
       </ul>   		
    </div>
 </div>

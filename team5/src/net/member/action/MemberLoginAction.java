@@ -49,7 +49,11 @@ public class MemberLoginAction implements Action {
    		session.setAttribute("nick", member.getId());
    		
    		forward.setRedirect(true);
-   		forward.setPath("./BoardContent.bo");
+   		if(member.getId().equals("admin")) {
+   	   		forward.setPath("./AdminManage.adm");
+   		} else {
+   	   		forward.setPath("./BoardContent.bo");
+   		}
    		return forward;
 
 	}
