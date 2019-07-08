@@ -58,6 +58,21 @@ public class MemberController extends HttpServlet {
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+		} else if(command.equals("/Admin.adm")){
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./board/board_admin_content.jsp"); 
+		} else if(command.equals("/AdminContent.adm")){
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./board/board_admin_content.jsp"); 
+		} else if(command.equals("/AdminManage.adm")){
+			action = new AdminManageAction();
+			try{
+				forward=action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 
 		if(forward.isRedirect()){

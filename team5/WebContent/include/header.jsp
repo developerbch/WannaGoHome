@@ -156,7 +156,7 @@ function doRTKeyword()
 
    <div class="gnb_nav">
       <ul class="gnb_nav_ea10">
-         <li><a href="./BoardContent.bo?pagefile=recipe" id="recipepage">레시피</a></li>
+         <li><a href="./BoardRecipeList.bo" id="recipepage">레시피</a></li>
          <li><a href="./BoardContent.bo?pagefile=talk" id="talkpage">토크</a></li>
          <li><a href="./BoardContent.bo?pagefile=cookinfo" id="cookinfopage">요리정보</a></li>
          <li><a href="./BoardContent.bo?pagefile=brand" id="brandpage">브랜드</a></li>
