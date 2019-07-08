@@ -6,7 +6,7 @@
 <head>
 <%
 	String pagefile = request.getParameter("pagefile");
-	if(pagefile==null) { pagefile="board_recipe_content"; }
+	if(pagefile==null) { pagefile="board_talk_content"; }
 	else if(pagefile.equals("recipe")) { pagefile="board_recipe_content"; }
 	else if(pagefile.equals("talk")) { pagefile="board_talk_content"; }
 	else if(pagefile.equals("cookinfo")) { pagefile="board_cookinfo_content"; }

@@ -66,9 +66,9 @@ public class RecipeAddAction implements Action {
 					break;
 				else {
 					if(i == 0) {
-						recipedata.setEssential_ingredient(essential_ingredient_nm[i] + "-" + essential_ingredient_amt[i]);
+						recipedata.setEssential_ingredient(essential_ingredient_nm[i] + " " + essential_ingredient_amt[i]);
 					} else {
-						recipedata.setEssential_ingredient(recipedata.getEssential_ingredient() + "*" + 
+						recipedata.setEssential_ingredient(recipedata.getEssential_ingredient() + ", " + 
 								essential_ingredient_nm[i] + "-" + essential_ingredient_amt[i]);
 					}
 				}

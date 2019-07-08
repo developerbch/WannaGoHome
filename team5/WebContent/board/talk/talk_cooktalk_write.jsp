@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
    pageEncoding="EUC-KR"%>
+<link rel="stylesheet" type="text/css" href="/team5/css_recipe/talk_layout.css" />
 <script type="text/javascript">
-<!--
+/*
 var imgNo = 0;
 var _VIDEO_PHOTO_SIZE = {"width":178,"height":100};
 $(document).ready(function()
@@ -87,7 +88,7 @@ function handlePhotoFiles(e){
     }
     reader.readAsDataURL(e.target.files[0]);
 }
-
+*/
 function doSubmit()
 {
     if($("textarea[name='board_tx']").val() == '') {
@@ -103,11 +104,13 @@ function deleteImg(_no)
     $('#img_url'+_no).remove();
     $('#img_nm'+_no).remove();
 
-    if ($('.write_pic2 > .complete_pic').length == 1) {
-        $('.write_pic2').css('background','url(http://recipe1.ezmember.co.kr/img/img_pic2.gif) center no-repeat');
-    }
+/* 
+ *    if ($('.write_pic2 > .complete_pic').length == 1) {
+ *       $('.write_pic2').css('background','url(http://recipe1.ezmember.co.kr/img/img_pic2.gif) center no-repeat');
+ *   } 
+ */
 }
-
+/*
 function deleteImg2(_no)
 {
     $('#img_dv'+_no).remove();
@@ -161,7 +164,7 @@ function delVideoPhoto(){
     $("#video_src").val('');
     $("#divVideoPhotoBox").html('<img id="videoPhotoHolder" src="http://recipe1.ezmember.co.kr/img/pic_none5.gif" style="width: 178px; height: 100px;">');
 }
-//-->
+*/
 </script>
 
 
@@ -182,7 +185,7 @@ function delVideoPhoto(){
          <!-- ☆important☆ -->
 
          <form name="myform" id="myform" method="post"
-            action="/talk/insert.html" onsubmit="return doSubmit()">
+            action="./TalkAddAction.bo" onsubmit="return doSubmit()" enctype="multipart/form-data">
             <input type="hidden" name="q_mode" value="insert"> <input
                type="hidden" name="recipe_sq" value=""> <input
                type="hidden" name="seq" value=""> <input type="hidden"
@@ -218,29 +221,54 @@ function delVideoPhoto(){
                </div>
                <div class="blank_bottom"></div>
                <!-- ☆important☆ -->
+	          <script type="text/javascript">
+	          	var imgNo = 0;
+		      	var sel_files = [];
+		      	$(document).ready(function() {
+		      		$("#talk_img_file").on("change", handleIStepmageFileSelect);
+		      	});
+		      	function fileUpLoadAction() {
+		      		console.log("fileUpLoadAction");
+		      		$("#talk_img_file").trigger('click');
+		      	}
+		      	function handleIStepmageFileSelect(e) {
+		      		sel_files = [];
+		      		$("")
+		      		var files = e.target.files;
+		      		var filesArr = Array.prototype.slice.call(files);
+		      		
+		      		filesArr.forEach(function(f) {
+		      			if(!f.type.match("image.*")) {
+		      				alert("이미지 파일만 가능합니다");
+		      				return;
+		      			}
+		      			sel_files.push(f);
+		      			var reader = new FileReader();
+		      			reader.onload = function(e) {
+		      				var img_html = "<div id='img_dd" + imgNo + "' class='complete_pic'>"; 
+	      						img_html += "<a href='javascript:deleteImg(" + imgNo + ");' class='pic_del'></a>"; 
+		      					img_html += "<img src=\"" + e.target.result + "\" width=\"140\" height=\"140\"/>";
+		      					img_html += "</div>";
+		      				$(".write_pic2").append(img_html);
+		      				imgNo++;
+		      			}
+		      			reader.readAsDataURL(f);
+		      		});
+		      	}
+			  </script>
                <div class="write_pic2" style="background: rgb(255, 255, 255);">
-                  <input type="file" name="file" id="file_1" style="display: none;">
+                  <input multiple="multiple" type="file" name="talk_img_file" id="talk_img_file" style="display: none;">
                   <div class="complete_pic">
                      <img src="http://recipe1.ezmember.co.kr/img/pic_none3.gif"
                         alt="파일첨부" width="140" height="140"
-                        onclick="document.getElementById('file_1').click();"
+                        onclick="document.getElementById('talk_img_file').click();"
                         style="cursor: pointer;">
                   </div>
-                  <div id="img_dd0" class="complete_pic">
+                  <!-- <div id="img_dd0" class="complete_pic">
                      <a href="javascript:deleteImg(0);" class="pic_del"></a><img
                         src="http://www.10000recipe.com/upload/temp/10b3a9e8641753f82d89e5927a03a9bb.jpg"
                         width="140" height="140">
-                  </div>
-                  <div id="img_dd1" class="complete_pic">
-                     <a href="javascript:deleteImg(1);" class="pic_del"></a><img
-                        src="http://www.10000recipe.com/upload/temp/3d84c0e6e2ce67151a6386cf14a61e69.png"
-                        width="140" height="140">
-                  </div>
-                  <div id="img_dd2" class="complete_pic">
-                     <a href="javascript:deleteImg(2);" class="pic_del"></a><img
-                        src="http://www.10000recipe.com/upload/temp/284d098a209e38b05523bcf940a5a25f.png"
-                        width="140" height="140">
-                  </div>
+                  </div> -->
                </div>
                <div class="blank_bottom"></div>
                <!-- ☆important☆ -->
@@ -253,7 +281,7 @@ function delVideoPhoto(){
                </div>
             </div>
             <!-- /cs_write -->
-            <input type="hidden" name="img_url[]" id="img_url0"
+            <!-- <input type="hidden" name="img_url[]" id="img_url0"
                value="http://www.10000recipe.com/upload/temp/10b3a9e8641753f82d89e5927a03a9bb.jpg"><input
                type="hidden" name="file_nm[]" id="img_nm0" value="dog.jpg"><input
                type="hidden" name="img_url[]" id="img_url1"
@@ -261,7 +289,7 @@ function delVideoPhoto(){
                type="hidden" name="file_nm[]" id="img_nm1" value="imgupload2.png"><input
                type="hidden" name="img_url[]" id="img_url2"
                value="http://www.10000recipe.com/upload/temp/284d098a209e38b05523bcf940a5a25f.png"><input
-               type="hidden" name="file_nm[]" id="img_nm2" value="imgupload2.png">
+               type="hidden" name="file_nm[]" id="img_nm2" value="imgupload2.png"> -->
          </form>
       </div>
    </dl>

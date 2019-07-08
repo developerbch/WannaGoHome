@@ -124,7 +124,6 @@ public class MemberDAO {
 	public List getMemberList() {
 		String sql="SELECT * FROM MEMBER";
 		List memberlist=new ArrayList();
-
 		try{
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
@@ -141,7 +140,6 @@ public class MemberDAO {
 
 				memberlist.add(mb);				
 			}
-
 			return memberlist;
 		}catch(Exception ex){
 			System.out.println("getMemberList ¿¡·¯: " + ex);			
